@@ -1,0 +1,57 @@
+:root {
+  --color-primary: #1E1E1E;
+  --color-secondary: #6C6B6B;
+  --color-background: #FFFFFF;
+  --color-background-alt: #F5F5F5;
+  --color-border: #E0E0E0;
+  --color-text-primary: #1E1E1E;
+  --color-text-secondary: #6C6B6B;
+  --color-text-muted: rgba(0, 0, 0, 0.54);
+  --color-hover: #F5F5F5;
+  --color-active: #E8E8E8;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+
+  --sidebar-width: 180px;
+  --sidebar-width-collapsed: 44px;
+  --header-height: 64px;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-round: 50%;
+
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --icon-size-sm: 20px;
+  --icon-size-md: 24px;
+  --icon-size-lg: 30px;
+
+  --button-height-sm: 32px;
+  --button-height-md: 36px;
+  --button-height-lg: 40px;
+
+  --table-row-height: 52px;
+  --table-header-height: 56px;
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+
+  --shadow-sm: 0 1px 3px var(--color-shadow);
+  --shadow-md: 0 2px 8px var(--color-shadow);
+  --shadow-lg: 0 4px 16px var(--color-shadow);
+}

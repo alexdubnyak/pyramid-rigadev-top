@@ -1,0 +1,12 @@
+.users-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-background-alt);
+}
+
+.username-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
