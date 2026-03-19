@@ -1,8 +1,73 @@
 .dashboard-page {
   display: flex;
   flex-direction: column;
+  gap: var(--card-gap);
   height: 100%;
-  background-color: var(--color-background-alt);
+  background-color: var(--color-background-page);
+  padding: var(--card-padding);
+  overflow-y: auto;
+}
+
+.dashboard-page__stats-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--stats-bar-gap);
+  padding: var(--stats-bar-padding);
+  background-color: var(--card-bg-color);
+  border-radius: var(--card-border-radius);
+  flex-wrap: wrap;
+  box-shadow: var(--card-shadow);
+}
+
+.dashboard-page__game-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.dashboard-page__stats-bar .dashboard-page__refresh-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.dashboard-page__stats-bar .dashboard-page__refresh-button:hover {
+  background-color: var(--color-hover);
+}
+
+.dashboard-page__stats-bar .dashboard-page__refresh-button:active {
+  background-color: var(--color-active);
+}
+
+.dashboard-page__stats-bar .dashboard-page__game-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.dashboard-page__stats-bar .dashboard-page__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.dashboard-page__stat-item {
+  font-size: var(--stats-item-font-size);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.dashboard-page__stat-item strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
 }
 
 .dashboard-page__tabs {
@@ -43,22 +108,20 @@
   background-color: var(--color-primary);
   color: var(--color-background);
   border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(108, 93, 211, 0.2);
 }
 
-.dashboard-page__header {
+.dashboard-page__content-header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--color-background);
+  gap: var(--header-gap);
+  padding: var(--header-padding-y) var(--header-padding-x);
   border-bottom: 1px solid var(--color-border);
   flex-wrap: wrap;
 }
 
-.dashboard-page__title {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
+.dashboard-page__content-header .dashboard-page__toolbar {
+  margin-left: auto;
 }
 
 .dashboard-page__date-filters {
@@ -69,23 +132,29 @@
 .dashboard-page__date-field {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--label-gap);
+}
+
+.dashboard-page__date-field--horizontal {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--label-gap-horizontal);
 }
 
 .dashboard-page__date-field label {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-secondary);
+  font-size: var(--label-font-size);
+  color: var(--label-color);
   white-space: nowrap;
 }
 
 .dashboard-page__date-field input {
-  padding: var(--spacing-sm);
-  height: 32px;
-  font-size: var(--font-size-sm);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-sm);
-  background-color: var(--color-background);
-  color: var(--color-text-primary);
+  padding: var(--input-padding-y) var(--input-padding-x);
+  font-size: var(--input-font-size);
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  background-color: var(--input-bg-color);
+  color: var(--input-text-color);
+  min-width: var(--input-min-width);
 }
 
 .dashboard-page__stats {
@@ -119,8 +188,10 @@
 }
 
 .dashboard-page__content {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  background-color: var(--card-bg-color);
+  border-radius: var(--card-border-radius);
   overflow: hidden;
+  box-shadow: var(--card-shadow);
 }

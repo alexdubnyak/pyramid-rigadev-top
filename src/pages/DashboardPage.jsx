@@ -1,15 +1,27 @@
 import { useState } from 'react';
+import Icon from '../components/common/Icon';
 import IconButton from '../components/common/IconButton';
 import Table from '../components/table/Table';
 import Pagination from '../components/table/Pagination';
 import './DashboardPage.css';
 
-const DashboardPage = () => {
+const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
   const [activeTab, setActiveTab] = useState('L');
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [minDate, setMinDate] = useState('2026-02-13');
   const [maxDate, setMaxDate] = useState('2026-03-15');
+
+  const games = {
+    'dashboard-riga': { label: 'Riga Lottery', logo: 'riga lottery.png' },
+    'dashboard-scratch': { label: 'Scratch Lottery', logo: 'scratch lottery.png' },
+    'dashboard-yantra': { label: 'Yantra Lottery', logo: 'yantra lottery.png' },
+    'dashboard-triple': { label: 'Triple Chance', logo: 'tripple chance.png' },
+    'dashboard-worli': { label: 'Worli Matka', logo: 'worli matka.png' },
+    'dashboard-wheel': { label: 'Wheel Of Chance', logo: 'wheel of chance.png' },
+  };
+
+  const currentGameInfo = games[currentGame] || games['dashboard-riga'];
 
   const tabs = [
     { id: 'L', name: 'riga lottery.png' },
@@ -20,17 +32,41 @@ const DashboardPage = () => {
     { id: 'W', name: 'wheel of chance.png' }
   ];
 
-  const mockData = [
-    { 
-      name: 'Draw_RL25', 
-      calculateDate: '26/02/2026 12:09:00', 
-      status: 'RUNNING', 
-      tickets: '0',
-      totalAmount: '0.00',
-      totalPayout: '0.00',
-      totalCommission: '0.00'
-    },
-  ];
+  const generateMockData = () => {
+    const statuses = ['RUNNING', 'COMPLETED', 'PENDING', 'RESTARTED', 'FAILED'];
+    const names = ['Draw_RL', 'Draw_SL', 'Draw_YL', 'Draw_TC', 'Draw_WM', 'Draw_WC'];
+    const data = [];
+    
+    for (let i = 1; i <= 60; i++) {
+      const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+      const randomName = names[Math.floor(Math.random() * names.length)];
+      const tickets = Math.floor(Math.random() * 1000);
+      const amount = (Math.random() * 10000).toFixed(2);
+      const payout = (Math.random() * 8000).toFixed(2);
+      const commission = (Math.random() * 500).toFixed(2);
+      
+      const startDate = new Date(2026, 2, Math.floor(Math.random() * 28) + 1, Math.floor(Math.random() * 24), Math.floor(Math.random() * 60), Math.floor(Math.random() * 60));
+      const endDate = new Date(startDate.getTime() + Math.random() * 3600000);
+      
+      data.push({
+        name: `${randomName}${String(i).padStart(4, '0')}`,
+        calculateDate: startDate.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+        status: randomStatus,
+        tickets: String(tickets),
+        totalAmount: amount,
+        totalPayout: payout,
+        totalCommission: commission,
+        startDate: startDate.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+        endDate: endDate.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+        executionId: `m${Math.random().toString(36).substring(2, 15)}`,
+        yantraId: `m${Math.random().toString(36).substring(2, 15)}`,
+      });
+    }
+    
+    return data;
+  };
+
+  const mockData = generateMockData();
 
   const columns = [
     { key: 'name', label: 'Name', sortable: true },
@@ -40,6 +76,10 @@ const DashboardPage = () => {
     { key: 'totalAmount', label: 'Total amount', sortable: true },
     { key: 'totalPayout', label: 'Total payout', sortable: true },
     { key: 'totalCommission', label: 'Total com...', sortable: true },
+    { key: 'startDate', label: 'Start date', sortable: true },
+    { key: 'endDate', label: 'End date', sortable: true },
+    { key: 'executionId', label: 'Execution ID', sortable: true },
+    { key: 'yantraId', label: 'Yantra ID', sortable: true },
   ];
 
   const stats = [
@@ -55,7 +95,7 @@ const DashboardPage = () => {
 
   return (
     <div className="dashboard-page">
-      <div className="dashboard-page__tabs">
+      {/* <div className="dashboard-page__tabs">
         {tabs.map(tab => (
           <button
             key={tab.id}
@@ -65,50 +105,59 @@ const DashboardPage = () => {
             <img src={`/src/assets/${tab.name}`} alt={tab.id} />
           </button>
         ))}
-      </div>
+      </div> */}
 
-      <div className="dashboard-page__header">
-        <IconButton icon="sync-alt" />
-        <span className="dashboard-page__title">Lottery Stats</span>
-        
-        <div className="dashboard-page__date-filters">
-          <div className="dashboard-page__date-field">
-            <label>Minimum calculation date</label>
-            <input 
-              type="date" 
-              value={minDate} 
-              onChange={(e) => setMinDate(e.target.value)}
-            />
-          </div>
-          <div className="dashboard-page__date-field">
-            <label>Maximum calculation date</label>
-            <input 
-              type="date" 
-              value={maxDate} 
-              onChange={(e) => setMaxDate(e.target.value)}
-            />
-          </div>
+      <div className="dashboard-page__stats-bar">
+        <div className="dashboard-page__game-info">
+          <button className="dashboard-page__refresh-button">
+            <Icon name="replay-icon" size="md" />
+          </button>
+          <img 
+            src={`/src/assets/${currentGameInfo.logo}`} 
+            alt={currentGameInfo.label}
+            className="dashboard-page__game-logo"
+          />
+          <span className="dashboard-page__title">{currentGameInfo.label}</span>
         </div>
-
-        <div className="dashboard-page__stats">
-          {stats.map((stat, index) => (
-            <div key={index} className="dashboard-page__stat">
-              <span className="dashboard-page__stat-label">{stat.label}:</span>
-              <span className="dashboard-page__stat-value">{stat.value}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="dashboard-page__toolbar">
-          <IconButton icon="search" />
-          <IconButton icon="filter" />
-          <IconButton icon="view-column" />
-          <IconButton icon="density-medium" />
-          <IconButton icon="fullscreen" />
-        </div>
+        <span className="dashboard-page__stat-item">Draws: <strong>1</strong></span>
+        <span className="dashboard-page__stat-item">Pending draws: <strong>1</strong></span>
+        <span className="dashboard-page__stat-item">Calculated draws: <strong>0</strong></span>
+        <span className="dashboard-page__stat-item">Tickets: <strong>0</strong></span>
+        <span className="dashboard-page__stat-item">Pending tickets: <strong>0</strong></span>
+        <span className="dashboard-page__stat-item">Sum: <strong>0.00</strong></span>
+        <span className="dashboard-page__stat-item">Payout: <strong>0.00</strong></span>
+        <span className="dashboard-page__stat-item">Commission: <strong>0.00</strong></span>
       </div>
 
       <div className="dashboard-page__content">
+        <div className="dashboard-page__content-header">
+          <div className="dashboard-page__date-filters">
+            <div className="dashboard-page__date-field dashboard-page__date-field--horizontal">
+              <label>Minimum calculation date</label>
+              <input 
+                type="date" 
+                value={minDate} 
+                onChange={(e) => setMinDate(e.target.value)}
+              />
+            </div>
+            <div className="dashboard-page__date-field dashboard-page__date-field--horizontal">
+              <label>Maximum calculation date</label>
+              <input 
+                type="date" 
+                value={maxDate} 
+                onChange={(e) => setMaxDate(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="dashboard-page__toolbar">
+            <IconButton icon="search" />
+            <IconButton icon="filter" />
+            <IconButton icon="view-column" />
+            <IconButton icon="density-medium" />
+            <IconButton icon="fullscreen" />
+          </div>
+        </div>
         <Table columns={columns} data={mockData} />
         <Pagination 
           currentPage={currentPage}

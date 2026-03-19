@@ -7,12 +7,14 @@ import ReportPage from './pages/ReportPage';
 import './App.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('dashboard');
+  const [currentPage, setCurrentPage] = useState('dashboard-riga');
 
   const renderPage = () => {
+    if (currentPage.startsWith('dashboard')) {
+      return <DashboardPage currentGame={currentPage} />;
+    }
+    
     switch (currentPage) {
-      case 'dashboard':
-        return <DashboardPage />;
       case 'users':
         return <UsersPage />;
       case 'credit-balance':
@@ -20,7 +22,7 @@ function App() {
       case 'report':
         return <ReportPage />;
       default:
-        return <DashboardPage />;
+        return <DashboardPage currentGame={currentPage} />;
     }
   };
 

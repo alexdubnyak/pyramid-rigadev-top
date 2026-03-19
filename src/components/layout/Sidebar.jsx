@@ -5,9 +5,18 @@ import './Sidebar.css';
 
 const Sidebar = ({ currentPage, onPageChange }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isDashboardOpen, setIsDashboardOpen] = useState(true);
+
+  const dashboardGames = [
+    { id: 'dashboard-riga', label: 'Riga Lottery', logo: 'riga lottery.png' },
+    { id: 'dashboard-scratch', label: 'Scratch Lottery', logo: 'scratch lottery.png' },
+    { id: 'dashboard-yantra', label: 'Yantra Lottery', logo: 'yantra lottery.png' },
+    { id: 'dashboard-triple', label: 'Triple Chance', logo: 'tripple chance.png' },
+    { id: 'dashboard-worli', label: 'Worli Matka', logo: 'worli matka.png' },
+    { id: 'dashboard-wheel', label: 'Wheel Of Chance', logo: 'wheel of chance.png' },
+  ];
 
   const menuItems = [
-    { id: 'dashboard', icon: 'dashboard', label: 'Dashboard' },
     { id: 'users', icon: 'users', label: 'Users' },
     { id: 'credit-balance', icon: 'credit-card', label: 'Credit balance' },
     { id: 'cash-settlement', icon: 'cash-settlement', label: 'Cash settlement' },
@@ -52,6 +61,33 @@ const Sidebar = ({ currentPage, onPageChange }) => {
       </div>
 
       <nav className="sidebar__nav">
+        <button
+          className={`sidebar__nav-item ${currentPage.startsWith('dashboard') ? 'sidebar__nav-item--active' : ''}`}
+          onClick={() => setIsDashboardOpen(!isDashboardOpen)}
+        >
+          <Icon name="dashboard" size="md" />
+          {!isCollapsed && (
+            <>
+              <span>Dashboard</span>
+              <span style={{ marginLeft: 'auto', fontSize: '12px' }}>{isDashboardOpen ? '▼' : '▶'}</span>
+            </>
+          )}
+        </button>
+        
+        {isDashboardOpen && !isCollapsed && (
+          <div className="sidebar__submenu">
+            {dashboardGames.map(game => (
+              <button
+                key={game.id}
+                className={`sidebar__submenu-item ${currentPage === game.id ? 'sidebar__submenu-item--active' : ''}`}
+                onClick={() => onPageChange(game.id)}
+              >
+                {game.label}
+              </button>
+            ))}
+          </div>
+        )}
+
         {menuItems.map(item => (
           <button
             key={item.id}

@@ -1,56 +1,186 @@
 :root {
-  --color-primary: #1E1E1E;
-  --color-secondary: #6C6B6B;
-  --color-background: #FFFFFF;
-  --color-background-alt: #F5F5F5;
-  --color-border: #E0E0E0;
-  --color-text-primary: #1E1E1E;
-  --color-text-secondary: #6C6B6B;
-  --color-text-muted: rgba(0, 0, 0, 0.54);
-  --color-hover: #F5F5F5;
-  --color-active: #E8E8E8;
-  --color-shadow: rgba(0, 0, 0, 0.1);
+  /* ========================================
+     ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ (Первый уровень)
+     ======================================== */
+  
+  /* Базовые цвета */
+  --base-color-primary: #6C5DD3;
+  --base-color-secondary: #8B7FE8;
+  --base-color-white: #FFFFFF;
+  --base-color-gray-50: #F6F7FB;
+  --base-color-gray-100: #F8F7FF;
+  --base-color-gray-200: #EBEAFC;
+  --base-color-gray-300: #F0EEFF;
+  --base-color-gray-400: #E8E6F2;
+  --base-color-gray-700: #6C6B6B;
+  --base-color-gray-900: #1E1E1E;
+  
+  /* Базовые размеры */
+  --base-spacing-1: 4px;
+  --base-spacing-2: 8px;
+  --base-spacing-3: 12px;
+  --base-spacing-4: 16px;
+  --base-spacing-6: 24px;
+  --base-spacing-8: 32px;
+  
+  /* Базовые радиусы */
+  --base-radius-sm: 4px;
+  --base-radius-md: 8px;
+  --base-radius-lg: 12px;
+  --base-radius-round: 50%;
+  
+  /* Базовые размеры шрифтов */
+  --base-font-xs: 11px;
+  --base-font-sm: 12px;
+  --base-font-md: 14px;
+  --base-font-lg: 16px;
+  --base-font-xl: 20px;
+  
+  /* Базовые веса шрифтов */
+  --base-weight-normal: 400;
+  --base-weight-medium: 500;
+  --base-weight-semibold: 600;
+  --base-weight-bold: 700;
+  
+  /* Базовые переходы */
+  --base-transition-fast: 0.15s ease;
+  --base-transition-normal: 0.3s ease;
 
+  /* ========================================
+     ЛОКАЛЬНЫЕ ПЕРЕМЕННЫЕ (Второй уровень)
+     ======================================== */
+  
+  /* Цвета */
+  --color-primary: var(--base-color-primary);
+  --color-secondary: var(--base-color-secondary);
+  --color-background: var(--base-color-white);
+  --color-background-alt: var(--base-color-gray-100);
+  --color-background-page: var(--base-color-gray-50);
+  --color-background-sidebar: var(--base-color-white);
+  --color-border: var(--base-color-gray-400);
+  --color-text-primary: var(--base-color-gray-900);
+  --color-text-secondary: var(--base-color-gray-700);
+  --color-text-muted: rgba(0, 0, 0, 0.54);
+  --color-hover: var(--base-color-gray-300);
+  --color-active: var(--base-color-gray-200);
+  --color-shadow: rgba(108, 93, 211, 0.1);
+  --color-shadow-light: rgba(0, 0, 0, 0.05);
+
+  /* Размеры компонентов */
   --sidebar-width: 180px;
   --sidebar-width-collapsed: 44px;
   --header-height: 64px;
 
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
+  /* Отступы */
+  --spacing-xs: var(--base-spacing-1);
+  --spacing-sm: var(--base-spacing-2);
+  --spacing-md: var(--base-spacing-4);
+  --spacing-lg: var(--base-spacing-6);
+  --spacing-xl: var(--base-spacing-8);
+  
+  /* Label */
+  --label-font-size: var(--base-font-md);
+  --label-color: var(--color-text-secondary);
+  --label-gap: var(--base-spacing-1);
+  --label-gap-horizontal: var(--base-spacing-3);
+  
+  /* Input поля */
+  --input-padding-x: var(--base-spacing-3);
+  --input-padding-y: var(--base-spacing-2);
+  --input-min-width: 180px;
+  --input-font-size: var(--base-font-md);
+  --input-border-width: 1px;
+  --input-border-color: var(--color-border);
+  --input-border-radius: var(--base-radius-sm);
+  --input-bg-color: var(--color-background);
+  --input-text-color: var(--color-text-primary);
 
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 12px;
-  --border-radius-round: 50%;
+  /* Радиусы */
+  --border-radius-sm: var(--base-radius-sm);
+  --border-radius-md: var(--base-radius-md);
+  --border-radius-lg: var(--base-radius-lg);
+  --border-radius-round: var(--base-radius-round);
 
-  --font-size-xs: 11px;
-  --font-size-sm: 12px;
-  --font-size-md: 14px;
-  --font-size-lg: 16px;
-  --font-size-xl: 20px;
+  /* Шрифты */
+  --font-size-xs: var(--base-font-xs);
+  --font-size-sm: var(--base-font-sm);
+  --font-size-md: var(--base-font-md);
+  --font-size-lg: var(--base-font-lg);
+  --font-size-xl: var(--base-font-xl);
 
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
+  --font-weight-normal: var(--base-weight-normal);
+  --font-weight-medium: var(--base-weight-medium);
+  --font-weight-semibold: var(--base-weight-semibold);
+  --font-weight-bold: var(--base-weight-bold);
 
+  /* Иконки */
   --icon-size-sm: 20px;
   --icon-size-md: 24px;
   --icon-size-lg: 30px;
 
+  /* Кнопки */
   --button-height-sm: 32px;
   --button-height-md: 36px;
   --button-height-lg: 40px;
+  --button-padding-x: var(--base-spacing-4);
+  --button-padding-y: var(--base-spacing-2);
+  --button-border-radius: var(--base-radius-sm);
+  --button-font-size: var(--base-font-md);
+  --button-font-weight: var(--base-weight-medium);
 
+  /* Таблицы */
   --table-row-height: 52px;
   --table-header-height: 56px;
+  --table-padding-x: var(--base-spacing-4);
+  --table-padding-y: var(--base-spacing-2);
+  --table-border-color: var(--color-border);
+  --table-header-bg: var(--color-background);
+  --table-header-font-size: var(--base-font-md);
+  --table-header-font-weight: var(--base-weight-medium);
+  --table-header-color: var(--color-text-secondary);
+  --table-row-bg: var(--color-background);
+  --table-row-hover-bg: var(--color-hover);
+  
+  /* Блоки/Карточки */
+  --card-padding: var(--base-spacing-4);
+  --card-gap: var(--base-spacing-3);
+  --card-border-radius: var(--base-radius-md);
+  --card-bg-color: var(--color-background);
+  --card-shadow: var(--shadow-sm);
+  
+  /* Sidebar */
+  --sidebar-padding: var(--base-spacing-2);
+  --sidebar-item-height: 40px;
+  --sidebar-item-padding-x: var(--base-spacing-4);
+  --sidebar-item-padding-y: var(--base-spacing-2);
+  --sidebar-item-gap: var(--base-spacing-4);
+  --sidebar-item-border-radius: var(--base-radius-sm);
+  --sidebar-item-font-size: var(--base-font-md);
+  --sidebar-item-font-weight: var(--base-weight-normal);
+  --sidebar-item-color: var(--color-text-secondary);
+  --sidebar-item-active-color: var(--color-primary);
+  --sidebar-submenu-padding-left: var(--base-spacing-6);
+  --sidebar-submenu-item-height: 36px;
+  --sidebar-submenu-border-width: 2px;
+  --sidebar-submenu-font-size: var(--base-font-sm);
+  --sidebar-user-name-font-size: var(--base-font-md);
+  --sidebar-user-company-font-size: var(--base-font-sm);
+  
+  /* Header */
+  --header-padding-x: var(--base-spacing-6);
+  --header-padding-y: var(--base-spacing-4);
+  --header-gap: var(--base-spacing-2);
+  
+  /* Stats Bar */
+  --stats-bar-padding: var(--base-spacing-3);
+  --stats-bar-gap: var(--base-spacing-8);
+  --stats-item-font-size: var(--base-font-md);
 
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.3s ease;
+  /* Переходы */
+  --transition-fast: var(--base-transition-fast);
+  --transition-normal: var(--base-transition-normal);
 
+  /* Тени */
   --shadow-sm: 0 1px 3px var(--color-shadow);
   --shadow-md: 0 2px 8px var(--color-shadow);
   --shadow-lg: 0 4px 16px var(--color-shadow);
