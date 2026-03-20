@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Table from '../components/table/Table';
 import Pagination from '../components/table/Pagination';
+import { getAssetPath } from '../utils/getAssetPath';
 import './ReportPage.css';
 
 const ReportPage = () => {
@@ -81,7 +82,7 @@ const ReportPage = () => {
   const renderLotteryStats = () => (
     <div className="report-page__stats">
       <button className="report-page__refresh">
-        <img src="/src/assets/sync-alt.svg" alt="refresh" />
+        <img src={getAssetPath('sync-alt.svg')} alt="refresh" />
         LOAD MORE
       </button>
       <span className="report-page__title">Lottery Stats</span>
@@ -111,7 +112,7 @@ const ReportPage = () => {
   const renderTripleChanceStats = () => (
     <div className="report-page__stats">
       <button className="report-page__refresh">
-        <img src="/src/assets/sync-alt.svg" alt="refresh" />
+        <img src={getAssetPath('sync-alt.svg')} alt="refresh" />
         LOAD MORE
       </button>
       <span className="report-page__title">Triple Chance Stats</span>

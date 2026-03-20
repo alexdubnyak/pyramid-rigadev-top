@@ -1,0 +1,96 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--base-spacing-3) var(--base-spacing-4);
+  margin: var(--base-spacing-4) var(--base-spacing-4) 0 0;
+  background-color: var(--card-bg-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  height: 64px;
+}
+
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: var(--base-spacing-3);
+}
+
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: var(--base-spacing-8);
+}
+
+.topbar__logo {
+  height: 32px;
+  object-fit: contain;
+}
+
+.topbar__brand {
+  font-size: var(--base-font-lg);
+  font-weight: var(--base-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.topbar__user {
+  display: flex;
+  align-items: center;
+  gap: var(--base-spacing-3);
+}
+
+.topbar__user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-background-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topbar__user-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--base-spacing-1);
+}
+
+.topbar__user-name {
+  font-size: var(--base-font-md);
+  font-weight: var(--base-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.topbar__user-company {
+  font-size: var(--base-font-sm);
+  color: var(--color-text-secondary);
+}
+
+.topbar__balance {
+  display: flex;
+  align-items: center;
+  gap: var(--base-spacing-2);
+  font-size: var(--base-font-md);
+  font-weight: var(--base-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.topbar__theme,
+.topbar__logout {
+  display: flex;
+  align-items: center;
+  gap: var(--base-spacing-2);
+  padding: var(--base-spacing-2) var(--base-spacing-3);
+  background-color: transparent;
+  border: none;
+  border-radius: var(--base-radius-sm);
+  font-size: var(--base-font-md);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color var(--base-transition-fast);
+}
+
+.topbar__theme:hover,
+.topbar__logout:hover {
+  background-color: var(--color-hover);
+}

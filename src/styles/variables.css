@@ -4,14 +4,14 @@
      ======================================== */
   
   /* Базовые цвета */
-  --base-color-primary: #6C5DD3;
-  --base-color-secondary: #8B7FE8;
+  --base-color-primary: #5B4FC5;
+  --base-color-secondary: #363636;
   --base-color-white: #FFFFFF;
-  --base-color-gray-50: #F6F7FB;
-  --base-color-gray-100: #F8F7FF;
-  --base-color-gray-200: #EBEAFC;
-  --base-color-gray-300: #F0EEFF;
-  --base-color-gray-400: #E8E6F2;
+  --base-color-gray-50: #F5F7FB;
+  --base-color-gray-100: #F6F8FF;
+  --base-color-gray-200: #E8ECFC;
+  --base-color-gray-300: #EDF1FF;
+  --base-color-gray-400: #E3E7F5;
   --base-color-gray-700: #6C6B6B;
   --base-color-gray-900: #1E1E1E;
   
@@ -59,7 +59,7 @@
   --color-background-sidebar: var(--base-color-white);
   --color-border: var(--base-color-gray-400);
   --color-text-primary: var(--base-color-gray-900);
-  --color-text-secondary: var(--base-color-gray-700);
+  --color-text-secondary: var(--base-color-gray-900);
   --color-text-muted: rgba(0, 0, 0, 0.54);
   --color-hover: var(--base-color-gray-300);
   --color-active: var(--base-color-gray-200);
@@ -150,9 +150,9 @@
   
   /* Sidebar */
   --sidebar-padding: var(--base-spacing-2);
-  --sidebar-item-height: 40px;
+  --sidebar-item-height: 48px;
   --sidebar-item-padding-x: var(--base-spacing-4);
-  --sidebar-item-padding-y: var(--base-spacing-2);
+  --sidebar-item-padding-y: var(--base-spacing-4);
   --sidebar-item-gap: var(--base-spacing-4);
   --sidebar-item-border-radius: var(--base-radius-sm);
   --sidebar-item-font-size: var(--base-font-md);

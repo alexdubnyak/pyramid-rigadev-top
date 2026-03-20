@@ -4,7 +4,7 @@
   gap: var(--card-gap);
   height: 100%;
   background-color: var(--color-background-page);
-  padding: var(--card-padding);
+  padding: var(--base-spacing-3) var(--card-padding) var(--card-padding) 0;
   overflow-y: auto;
 }
 

@@ -1,11 +1,11 @@
 import './Icon.css';
 
+import { getAssetPath } from '../../utils/getAssetPath';
+
 const Icon = ({ name, size = 'md', className = '' }) => {
-  const iconPath = `/src/assets/${name}.svg`;
-  
   return (
     <img 
-      src={iconPath} 
+      src={getAssetPath(`${name}.svg`)}
       alt={name}
       className={`icon icon--${size} ${className}`}
     />

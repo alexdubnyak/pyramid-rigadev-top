@@ -3,6 +3,7 @@ import Icon from '../components/common/Icon';
 import IconButton from '../components/common/IconButton';
 import Table from '../components/table/Table';
 import Pagination from '../components/table/Pagination';
+import { getAssetPath } from '../utils/getAssetPath';
 import './DashboardPage.css';
 
 const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
@@ -102,7 +103,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
             className={`dashboard-page__tab ${activeTab === tab.id ? 'dashboard-page__tab--active' : ''}`}
             onClick={() => setActiveTab(tab.id)}
           >
-            <img src={`/src/assets/${tab.name}`} alt={tab.id} />
+            <img src={getAssetPath(tab.name)} alt={tab.id} />
           </button>
         ))}
       </div> */}
@@ -113,7 +114,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
             <Icon name="replay-icon" size="md" />
           </button>
           <img 
-            src={`/src/assets/${currentGameInfo.logo}`} 
+            src={getAssetPath(currentGameInfo.logo)} 
             alt={currentGameInfo.label}
             className="dashboard-page__game-logo"
           />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Sidebar from './components/layout/Sidebar';
+import TopBar from './components/layout/TopBar';
 import DashboardPage from './pages/DashboardPage';
 import UsersPage from './pages/UsersPage';
 import CreditBalancePage from './pages/CreditBalancePage';
@@ -29,9 +30,12 @@ function App() {
   return (
     <div className="app">
       <Sidebar currentPage={currentPage} onPageChange={setCurrentPage} />
-      <main className="app__content">
-        {renderPage()}
-      </main>
+      <div className="app__main">
+        <TopBar />
+        <main className="app__content">
+          {renderPage()}
+        </main>
+      </div>
     </div>
   );
 }

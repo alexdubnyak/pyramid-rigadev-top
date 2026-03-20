@@ -37,27 +37,8 @@ const Sidebar = ({ currentPage, onPageChange }) => {
           className="sidebar__toggle"
         />
         {!isCollapsed && (
-          <img 
-            src="/src/assets/Riga365 Admin Panel logo.svg" 
-            alt="Riga365 Admin" 
-            className="sidebar__logo"
-          />
+          <span className="sidebar__collapse-text">collapse</span>
         )}
-      </div>
-
-      <div className="sidebar__user">
-        <Icon name="account-circle" size="md" />
-        {!isCollapsed && (
-          <div className="sidebar__user-info">
-            <div className="sidebar__user-name">admin1</div>
-            <div className="sidebar__user-company">Company</div>
-          </div>
-        )}
-      </div>
-
-      <div className="sidebar__balance">
-        {!isCollapsed && <span>Balance:</span>}
-        <Icon name="infinity" size="md" />
       </div>
 
       <nav className="sidebar__nav">
@@ -99,17 +80,6 @@ const Sidebar = ({ currentPage, onPageChange }) => {
           </button>
         ))}
       </nav>
-
-      <div className="sidebar__footer">
-        <button className="sidebar__footer-item">
-          <Icon name="dark-mode" size="md" />
-          {!isCollapsed && <span>Theme mode</span>}
-        </button>
-        <button className="sidebar__footer-item">
-          <Icon name="logout" size="md" />
-          {!isCollapsed && <span>Log out</span>}
-        </button>
-      </div>
     </aside>
   );
 };
