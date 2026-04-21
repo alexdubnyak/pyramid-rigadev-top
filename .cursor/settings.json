@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "figma-remote-local": {
+      "command": "npx",
+      "args": ["--yes", "mcp-remote", "http://127.0.0.1:3845/mcp"]
+    },
+    "figma-dev-mode-mcp-server": {
+      "command": "npx",
+      "args": ["--yes", "mcp-remote", "http://127.0.0.1:3845/mcp"],
+      "env": {},
+      "disabled": false
+    }
+  }
+}

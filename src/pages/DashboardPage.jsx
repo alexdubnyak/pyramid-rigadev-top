@@ -6,8 +6,41 @@ import Pagination from '../components/table/Pagination';
 import { getAssetPath } from '../utils/getAssetPath';
 import './DashboardPage.css';
 
+function buildDashboardMockRows() {
+  const statuses = ['RUNNING', 'COMPLETED', 'PENDING', 'RESTARTED', 'FAILED'];
+  const names = ['Draw_RL', 'Draw_SL', 'Draw_YL', 'Draw_TC', 'Draw_WM', 'Draw_WC'];
+  const data = [];
+
+  for (let i = 1; i <= 60; i++) {
+    const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    const tickets = Math.floor(Math.random() * 1000);
+    const amount = (Math.random() * 10000).toFixed(2);
+    const payout = (Math.random() * 8000).toFixed(2);
+    const commission = (Math.random() * 500).toFixed(2);
+
+    const startDate = new Date(2026, 2, Math.floor(Math.random() * 28) + 1, Math.floor(Math.random() * 24), Math.floor(Math.random() * 60), Math.floor(Math.random() * 60));
+    const endDate = new Date(startDate.getTime() + Math.random() * 3600000);
+
+    data.push({
+      name: `${randomName}${String(i).padStart(4, '0')}`,
+      calculateDate: startDate.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+      status: randomStatus,
+      tickets: String(tickets),
+      totalAmount: amount,
+      totalPayout: payout,
+      totalCommission: commission,
+      startDate: startDate.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+      endDate: endDate.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+      executionId: `m${Math.random().toString(36).substring(2, 15)}`,
+      yantraId: `m${Math.random().toString(36).substring(2, 15)}`,
+    });
+  }
+
+  return data;
+}
+
 const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
-  const [activeTab, setActiveTab] = useState('L');
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [minDate, setMinDate] = useState('2026-02-13');
@@ -24,50 +57,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
 
   const currentGameInfo = games[currentGame] || games['dashboard-riga'];
 
-  const tabs = [
-    { id: 'L', name: 'riga lottery.png' },
-    { id: 'S', name: 'scratch lottery.png' },
-    { id: 'Y', name: 'yantra lottery.png' },
-    { id: 'T', name: 'tripple chance.png' },
-    { id: 'K', name: 'worli matka.png' },
-    { id: 'W', name: 'wheel of chance.png' }
-  ];
-
-  const generateMockData = () => {
-    const statuses = ['RUNNING', 'COMPLETED', 'PENDING', 'RESTARTED', 'FAILED'];
-    const names = ['Draw_RL', 'Draw_SL', 'Draw_YL', 'Draw_TC', 'Draw_WM', 'Draw_WC'];
-    const data = [];
-    
-    for (let i = 1; i <= 60; i++) {
-      const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-      const randomName = names[Math.floor(Math.random() * names.length)];
-      const tickets = Math.floor(Math.random() * 1000);
-      const amount = (Math.random() * 10000).toFixed(2);
-      const payout = (Math.random() * 8000).toFixed(2);
-      const commission = (Math.random() * 500).toFixed(2);
-      
-      const startDate = new Date(2026, 2, Math.floor(Math.random() * 28) + 1, Math.floor(Math.random() * 24), Math.floor(Math.random() * 60), Math.floor(Math.random() * 60));
-      const endDate = new Date(startDate.getTime() + Math.random() * 3600000);
-      
-      data.push({
-        name: `${randomName}${String(i).padStart(4, '0')}`,
-        calculateDate: startDate.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-        status: randomStatus,
-        tickets: String(tickets),
-        totalAmount: amount,
-        totalPayout: payout,
-        totalCommission: commission,
-        startDate: startDate.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-        endDate: endDate.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-        executionId: `m${Math.random().toString(36).substring(2, 15)}`,
-        yantraId: `m${Math.random().toString(36).substring(2, 15)}`,
-      });
-    }
-    
-    return data;
-  };
-
-  const mockData = generateMockData();
+  const [mockData] = useState(() => buildDashboardMockRows());
 
   const columns = [
     { key: 'name', label: 'Name', sortable: true },
@@ -83,31 +73,8 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
     { key: 'yantraId', label: 'Yantra ID', sortable: true },
   ];
 
-  const stats = [
-    { label: 'Total draws', value: '1' },
-    { label: 'Total pending draws', value: '1' },
-    { label: 'Total calculated draws', value: '0' },
-    { label: 'Total tickets', value: '0' },
-    { label: 'Total pending tickets', value: '0' },
-    { label: 'Total Sum', value: '0.00' },
-    { label: 'Total Payout', value: '0.00' },
-    { label: 'Total Commission', value: '0.00' },
-  ];
-
   return (
     <div className="dashboard-page">
-      {/* <div className="dashboard-page__tabs">
-        {tabs.map(tab => (
-          <button
-            key={tab.id}
-            className={`dashboard-page__tab ${activeTab === tab.id ? 'dashboard-page__tab--active' : ''}`}
-            onClick={() => setActiveTab(tab.id)}
-          >
-            <img src={getAssetPath(tab.name)} alt={tab.id} />
-          </button>
-        ))}
-      </div> */}
-
       <div className="dashboard-page__stats-bar">
         <div className="dashboard-page__game-info">
           <button className="dashboard-page__refresh-button">

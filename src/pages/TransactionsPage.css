@@ -1,0 +1,46 @@
+.transactions-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-background-alt);
+}
+
+.transactions-page__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-lg) var(--spacing-md);
+}
+
+.transactions-page__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.transactions-page__field label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.transactions-page__field input {
+  padding: var(--spacing-sm);
+  height: 36px;
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-background);
+}
+
+.transactions-page__downloads {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.transactions-page__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-left: auto;
+}

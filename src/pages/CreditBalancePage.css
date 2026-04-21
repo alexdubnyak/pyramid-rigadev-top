@@ -5,8 +5,13 @@
   background-color: var(--color-background-alt);
 }
 
-.username-cell {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
+.credit-balance-page__modal-user {
+  margin: 0 0 var(--spacing-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.credit-balance-page__modal-hint {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
 }

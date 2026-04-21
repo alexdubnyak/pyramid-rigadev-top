@@ -36,6 +36,11 @@ const Table = ({ columns, data, actions }) => {
                         key={actionIndex}
                         icon={action.icon}
                         onClick={() => action.onClick(row)}
+                        className={
+                          typeof action.className === 'function'
+                            ? action.className(row)
+                            : action.className || ''
+                        }
                       />
                     ))}
                   </div>

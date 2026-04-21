@@ -15,6 +15,12 @@
   --base-color-gray-700: #6C6B6B;
   --base-color-gray-900: #1E1E1E;
   
+  /* Цвета из Figma */
+  --base-color-sidebar-bg: #f2f1ec;
+  --base-color-active-yellow: #efff42;
+  --base-color-active-orange: #ffc5a6;
+  --base-color-border-beige: #e9e6d8;
+  
   /* Базовые размеры */
   --base-spacing-1: 4px;
   --base-spacing-2: 8px;
@@ -56,13 +62,16 @@
   --color-background: var(--base-color-white);
   --color-background-alt: var(--base-color-gray-100);
   --color-background-page: var(--base-color-gray-50);
-  --color-background-sidebar: var(--base-color-white);
-  --color-border: var(--base-color-gray-400);
+  --color-background-sidebar: var(--base-color-sidebar-bg);
+  --color-border: var(--base-color-border-beige);
+  --color-border-sidebar: var(--base-color-border-beige);
   --color-text-primary: var(--base-color-gray-900);
   --color-text-secondary: var(--base-color-gray-900);
   --color-text-muted: rgba(0, 0, 0, 0.54);
   --color-hover: var(--base-color-gray-300);
   --color-active: var(--base-color-gray-200);
+  --color-active-yellow: var(--base-color-active-yellow);
+  --color-active-orange: var(--base-color-active-orange);
   --color-shadow: rgba(108, 93, 211, 0.1);
   --color-shadow-light: rgba(0, 0, 0, 0.05);
 
@@ -133,7 +142,7 @@
   --table-header-height: 56px;
   --table-padding-x: var(--base-spacing-4);
   --table-padding-y: var(--base-spacing-2);
-  --table-border-color: var(--color-border);
+  --table-border-color: var(--color-border-sidebar);
   --table-header-bg: var(--color-background);
   --table-header-font-size: var(--base-font-md);
   --table-header-font-weight: var(--base-weight-medium);

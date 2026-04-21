@@ -3,7 +3,7 @@ import Button from '../common/Button';
 import Icon from '../common/Icon';
 import './Header.css';
 
-const Header = ({ title, onSearch, searchValue, showAddButton = false, onAddClick }) => {
+const Header = ({ onSearch, searchValue, showAddButton = false, onAddClick, addButtonLabel = 'Add Area Distributer' }) => {
   return (
     <header className="header">
       <div className="header__search">
@@ -21,7 +21,7 @@ const Header = ({ title, onSearch, searchValue, showAddButton = false, onAddClic
           className="header__add-button"
         >
           <Icon name="add" size="lg" />
-          Add Area Distributer
+          {addButtonLabel}
         </Button>
       )}
     </header>

@@ -16,3 +16,8 @@
 .icon-button:active {
   background-color: var(--color-active);
 }
+
+.icon-button--state-off img {
+  opacity: 0.42;
+  filter: grayscale(0.35);
+}

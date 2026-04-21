@@ -1,167 +1,108 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Table from '../components/table/Table';
 import Pagination from '../components/table/Pagination';
-import { getAssetPath } from '../utils/getAssetPath';
+import Button from '../components/common/Button';
 import './ReportPage.css';
 
+const YEARS = [2024, 2025, 2026, 2027];
+const WEEKS = Array.from({ length: 52 }, (_, i) => i + 1);
+
+function formatRangeLabel(year, week) {
+  const start = new Date(year, 0, 1 + (week - 1) * 7);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  const fmt = (d) =>
+    d.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  return `${fmt(start)} – ${fmt(end)}`;
+}
+
 const ReportPage = () => {
-  const [activeTab, setActiveTab] = useState('L');
+  const [year, setYear] = useState(2026);
+  const [week, setWeek] = useState(15);
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const tabs = ['L', 'S', 'Y', 'T', 'K', 'W'];
+  const rangeLabel = useMemo(() => formatRangeLabel(year, week), [year, week]);
 
-  const mockLotteryData = [
-    { 
-      name: 'Draw_RL25', 
-      calculateDate: '26/02/2026 12:09:00', 
-      status: 'RUNNING', 
-      tickets: '0',
-      totalAmount: '0.00',
-      totalPayout: '0.00',
-      totalCommission: '0.00',
-      totalBonus: '0.00'
+  const mockRows = [
+    {
+      username: 'AdDeer001',
+      game: 'Riga Lottery',
+      round: 'Draw_RL001',
+      date: '06/04/2026',
+      roundTime: '06/04/2026 14:00',
+    },
+    {
+      username: 'lionad',
+      game: 'Yantra',
+      round: 'Y-102',
+      date: '07/04/2026',
+      roundTime: '07/04/2026 09:30',
     },
   ];
 
-  const mockTripleChanceData = [
-    { 
-      name: 'Test_TC04 (AMD)', 
-      status: 'PLACE_BETS', 
-      tickets: '0',
-      totalAmount: '0.00',
-      totalPayout: '0.00',
-      totalCommission: '0.00',
-      startDate: '15/03/2026 19:24:10',
-      endDate: '15/03/2026 19:24:24'
-    },
-    { 
-      name: 'Test_admin (AMD)', 
-      status: 'PLACE_BETS', 
-      tickets: '0',
-      totalAmount: '0.00',
-      totalPayout: '0.00',
-      totalCommission: '0.00',
-      startDate: '15/03/2026 19:24:02',
-      endDate: '15/03/2026 19:24:30'
-    },
-    { 
-      name: 'Triple test new (A...', 
-      status: 'PLACE_BETS', 
-      tickets: '0',
-      totalAmount: '0.00',
-      totalPayout: '0.00',
-      totalCommission: '0.00',
-      startDate: '15/03/2026 19:24:02',
-      endDate: '15/03/2026 19:24:30'
-    },
+  const columns = [
+    { key: 'username', label: 'Username', sortable: true },
+    { key: 'game', label: 'Game', sortable: true },
+    { key: 'round', label: 'Round', sortable: true },
+    { key: 'date', label: 'Date', sortable: true },
+    { key: 'roundTime', label: 'Round time/date', sortable: true },
   ];
-
-  const lotteryColumns = [
-    { key: 'name', label: 'Name', sortable: true },
-    { key: 'calculateDate', label: 'Calculate date', sortable: true },
-    { key: 'status', label: 'status', sortable: true },
-    { key: 'tickets', label: '# of tickets', sortable: true },
-    { key: 'totalAmount', label: 'Total amount', sortable: true },
-    { key: 'totalPayout', label: 'Total payout', sortable: true },
-    { key: 'totalCommission', label: 'Total com...', sortable: true },
-    { key: 'totalBonus', label: 'Total bonus...', sortable: true },
-  ];
-
-  const tripleChanceColumns = [
-    { key: 'name', label: 'Name', sortable: true },
-    { key: 'status', label: 'status', sortable: true },
-    { key: 'tickets', label: '# of ticket...', sortable: true },
-    { key: 'totalAmount', label: 'Total amount', sortable: true },
-    { key: 'totalPayout', label: 'Total payout', sortable: true },
-    { key: 'totalCommission', label: 'Total com...', sortable: true },
-    { key: 'startDate', label: 'Start date', sortable: true },
-    { key: 'endDate', label: 'End date', sortable: true },
-  ];
-
-  const renderLotteryStats = () => (
-    <div className="report-page__stats">
-      <button className="report-page__refresh">
-        <img src={getAssetPath('sync-alt.svg')} alt="refresh" />
-        LOAD MORE
-      </button>
-      <span className="report-page__title">Lottery Stats</span>
-      <div className="report-page__dates">
-        <div className="report-page__date-field">
-          <label>Minimum calculation date</label>
-          <input type="date" value="2026-02-13" />
-        </div>
-        <div className="report-page__date-field">
-          <label>Maximum calculation date</label>
-          <input type="date" value="2026-03-15" />
-        </div>
-      </div>
-      <div className="report-page__stats-info">
-        <span>Total draws: 1</span>
-        <span>Total pending draws: 1</span>
-        <span>Total calculated draws: 0</span>
-        <span>Total tickets: 0</span>
-        <span>Total pending tickets: 0</span>
-        <span>Total Sum: 0.00</span>
-        <span>Total Payout: 0.00</span>
-        <span>Total Commission: 0.00</span>
-      </div>
-    </div>
-  );
-
-  const renderTripleChanceStats = () => (
-    <div className="report-page__stats">
-      <button className="report-page__refresh">
-        <img src={getAssetPath('sync-alt.svg')} alt="refresh" />
-        LOAD MORE
-      </button>
-      <span className="report-page__title">Triple Chance Stats</span>
-      <div className="report-page__dates">
-        <div className="report-page__date-field">
-          <label>Minimum start date</label>
-          <input type="date" value="2026-03-08" />
-        </div>
-        <div className="report-page__date-field">
-          <label>Maximum end date</label>
-          <input type="date" value="2026-03-15" />
-        </div>
-      </div>
-      <div className="report-page__stats-info">
-        <span>Total executions: 500</span>
-        <span>Total finished executions: 500</span>
-        <span>Total sold tickets: 0</span>
-        <span>Total Sum: 0.00</span>
-        <span>Total Payout: 0.00</span>
-        <span>Total Commission: 0.00</span>
-      </div>
-    </div>
-  );
 
   return (
     <div className="report-page">
-      <div className="report-page__tabs">
-        {tabs.map(tab => (
-          <button
-            key={tab}
-            className={`report-page__tab ${activeTab === tab ? 'report-page__tab--active' : ''}`}
-            onClick={() => setActiveTab(tab)}
-          >
-            {tab}
-          </button>
-        ))}
+      <div className="report-page__toolbar">
+        <div className="report-page__filters">
+          <div className="report-page__field">
+            <label htmlFor="report-year">Year</label>
+            <select
+              id="report-year"
+              value={year}
+              onChange={(e) => setYear(Number(e.target.value))}
+            >
+              {YEARS.map((y) => (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="report-page__field">
+            <label htmlFor="report-week">Week</label>
+            <select
+              id="report-week"
+              value={week}
+              onChange={(e) => setWeek(Number(e.target.value))}
+            >
+              {WEEKS.map((w) => (
+                <option key={w} value={w}>
+                  {w}
+                </option>
+              ))}
+            </select>
+          </div>
+          <p className="report-page__range" role="status">
+            Date range: {rangeLabel}
+          </p>
+        </div>
+        <div className="report-page__grouping">
+          <span className="report-page__grouping-label">Group by:</span>
+          <span className="report-page__tag">Username</span>
+          <span className="report-page__tag">Game</span>
+          <span className="report-page__tag">Round</span>
+          <span className="report-page__tag">Date</span>
+        </div>
+        <div className="report-page__downloads">
+          <Button variant="secondary" size="sm" type="button">Download xlsx</Button>
+          <Button variant="secondary" size="sm" type="button">Download pdf</Button>
+        </div>
       </div>
 
-      {activeTab === 'L' && renderLotteryStats()}
-      {activeTab === 'T' && renderTripleChanceStats()}
-
       <div className="report-page__table">
-        <Table 
-          columns={activeTab === 'L' ? lotteryColumns : tripleChanceColumns} 
-          data={activeTab === 'L' ? mockLotteryData : mockTripleChanceData} 
-        />
-        <Pagination 
+        <Table columns={columns} data={mockRows} />
+        <Pagination
           currentPage={currentPage}
-          totalPages={activeTab === 'L' ? 1 : 50}
+          totalPages={1}
           onPageChange={setCurrentPage}
           rowsPerPage={rowsPerPage}
           onRowsPerPageChange={setRowsPerPage}

@@ -1,0 +1,79 @@
+.games-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-background-alt);
+}
+
+.games-page__tabs {
+  display: flex;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md) var(--spacing-lg) 0;
+}
+
+.games-page__tab {
+  min-height: 36px;
+  padding: 0 var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  background-color: var(--color-background-alt);
+  border: 1px solid var(--color-border);
+  border-bottom: none;
+  border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+  cursor: pointer;
+}
+
+.games-page__tab--active {
+  color: var(--color-primary);
+  background-color: var(--color-background);
+  border-color: var(--color-border);
+}
+
+.games-page__actions {
+  padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+.games-page__actions--split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.games-page__table-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.games-page__row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.games-page__hint {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.games-page__checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.games-page__checklist label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+}

@@ -14,6 +14,7 @@
   gap: var(--stats-bar-gap);
   padding: var(--stats-bar-padding);
   background-color: var(--card-bg-color);
+  border: 1px solid var(--color-border-sidebar);
   border-radius: var(--card-border-radius);
   flex-wrap: wrap;
   box-shadow: var(--card-shadow);
@@ -75,7 +76,7 @@
   gap: var(--spacing-xs);
   padding: var(--spacing-md) var(--spacing-lg);
   background-color: var(--color-background);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-sidebar);
 }
 
 .dashboard-page__tab {
@@ -85,7 +86,7 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
   background-color: var(--color-background-alt);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-sidebar);
   border-radius: var(--border-radius-sm);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -116,7 +117,7 @@
   align-items: center;
   gap: var(--header-gap);
   padding: var(--header-padding-y) var(--header-padding-x);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-sidebar);
   flex-wrap: wrap;
 }
 
@@ -191,6 +192,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--card-bg-color);
+  border: 1px solid var(--color-border-sidebar);
   border-radius: var(--card-border-radius);
   overflow: hidden;
   box-shadow: var(--card-shadow);

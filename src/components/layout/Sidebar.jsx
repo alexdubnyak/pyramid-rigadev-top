@@ -3,6 +3,16 @@ import Icon from '../common/Icon';
 import IconButton from '../common/IconButton';
 import './Sidebar.css';
 
+const isNavItemActive = (id, currentPage) => {
+  if (id === 'users') {
+    return currentPage === 'users' || currentPage === 'users-sub';
+  }
+  if (id === 'cash-settlement') {
+    return currentPage === 'cash-settlement' || currentPage === 'cash-balance';
+  }
+  return currentPage === id;
+};
+
 const Sidebar = ({ currentPage, onPageChange }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isDashboardOpen, setIsDashboardOpen] = useState(true);
@@ -50,7 +60,7 @@ const Sidebar = ({ currentPage, onPageChange }) => {
           {!isCollapsed && (
             <>
               <span>Dashboard</span>
-              <span style={{ marginLeft: 'auto', fontSize: '12px' }}>{isDashboardOpen ? '▼' : '▶'}</span>
+              <span className="sidebar__nav-arrow">{isDashboardOpen ? '▼' : '▶'}</span>
             </>
           )}
         </button>
@@ -72,7 +82,7 @@ const Sidebar = ({ currentPage, onPageChange }) => {
         {menuItems.map(item => (
           <button
             key={item.id}
-            className={`sidebar__nav-item ${currentPage === item.id ? 'sidebar__nav-item--active' : ''}`}
+            className={`sidebar__nav-item ${isNavItemActive(item.id, currentPage) ? 'sidebar__nav-item--active' : ''}`}
             onClick={() => onPageChange(item.id)}
           >
             <Icon name={item.icon} size="md" />

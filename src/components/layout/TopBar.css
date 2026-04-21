@@ -5,6 +5,7 @@
   padding: var(--base-spacing-3) var(--base-spacing-4);
   margin: var(--base-spacing-4) var(--base-spacing-4) 0 0;
   background-color: var(--card-bg-color);
+  border: 1px solid var(--color-border-sidebar);
   border-radius: var(--card-border-radius);
   box-shadow: var(--card-shadow);
   height: 64px;
