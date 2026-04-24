@@ -2,13 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--base-spacing-3) var(--base-spacing-4);
+  padding: var(--base-spacing-1) var(--base-spacing-4);
   margin: var(--base-spacing-4) var(--base-spacing-4) 0 0;
   background-color: var(--card-bg-color);
   border: 1px solid var(--color-border-sidebar);
   border-radius: var(--card-border-radius);
   box-shadow: var(--card-shadow);
-  height: 64px;
+  height: 40px;
 }
 
 .topbar__left {
@@ -41,10 +41,8 @@
 }
 
 .topbar__user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--base-color-white);
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,26 +50,34 @@
 
 .topbar__user-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   gap: var(--base-spacing-1);
 }
 
 .topbar__user-name {
-  font-size: var(--base-font-md);
+  font-size: var(--base-font-sm);
   font-weight: var(--base-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.topbar__user-separator {
+  font-size: var(--base-font-sm);
+  font-weight: var(--base-weight-normal);
   color: var(--color-text-primary);
 }
 
 .topbar__user-company {
   font-size: var(--base-font-sm);
-  color: var(--color-text-secondary);
+  font-weight: var(--base-weight-normal);
+  color: var(--color-text-primary);
 }
 
 .topbar__balance {
   display: flex;
   align-items: center;
   gap: var(--base-spacing-2);
-  font-size: var(--base-font-md);
+  font-size: var(--base-font-sm);
   font-weight: var(--base-weight-medium);
   color: var(--color-text-primary);
 }
@@ -85,7 +91,7 @@
   background-color: transparent;
   border: none;
   border-radius: var(--base-radius-sm);
-  font-size: var(--base-font-md);
+  font-size: var(--base-font-sm);
   color: var(--color-text-primary);
   cursor: pointer;
   transition: background-color var(--base-transition-fast);
