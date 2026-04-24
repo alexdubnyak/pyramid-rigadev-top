@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Icon from '../components/common/Icon';
 import IconButton from '../components/common/IconButton';
+import InfoTooltip from '../components/common/InfoTooltip';
 import Table from '../components/table/Table';
 import Pagination from '../components/table/Pagination';
 import { getAssetPath } from '../utils/getAssetPath';
@@ -76,59 +77,73 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
   return (
     <div className="dashboard-page">
       <div className="dashboard-page__balance-cards">
-        <div className="balance-card">
-          <div className="balance-card__icon" style={{ width: '56px' }}>
-            <img src={getAssetPath('card-credit-balance.png')} alt="" />
+        {[
+          {
+            icon: 'card-credit-balance.png',
+            iconWidth: '56px',
+            label: 'Credit balance',
+            tooltip:
+              'Total credit limit assigned to your account (profile field "limit"). This value does not change when you adjust the dashboard period above. Super admin: there is no finite credit limit — the card shows ∞.',
+            value: (
+              <img
+                src={getAssetPath('infinity-symbol.svg')}
+                alt="∞"
+                className="balance-card__infinity"
+              />
+            ),
+          },
+          {
+            icon: 'card-available-balance.png',
+            iconWidth: '60.56px',
+            label: 'Available balance',
+            tooltip:
+              'Remaining credit: your limit minus used limit (limit - usedLimit). Super admin: unlimited — shown as ∞.',
+            value: (
+              <img
+                src={getAssetPath('infinity-symbol.svg')}
+                alt="∞"
+                className="balance-card__infinity"
+              />
+            ),
+          },
+          {
+            icon: 'card-upper-settlement.png',
+            iconWidth: '55.35px',
+            label: 'Upper settlement',
+            tooltip:
+              'Your settlement with the upper line. Snapshot from your profile; it is not filtered by the selected date range. Refresh the page to get the latest value after back-office changes.',
+            value: <span className="balance-card__value">1,933,939.00</span>,
+          },
+          {
+            icon: 'card-lower-settlement.png',
+            iconWidth: '60.3px',
+            label: 'Lower settlement',
+            tooltip:
+              'Aggregated settlement summed over all users in your downline tree. It is not filtered by the selected date range.',
+            value: <span className="balance-card__value">1,933,939.00</span>,
+          },
+          {
+            icon: 'card-total-commission.png',
+            iconWidth: '59.42px',
+            label: 'Total commission',
+            tooltip:
+              'Total commission across all games for the selected Dashboard period (top date range). Per-game stats use the Period range in the Game statistics block below.',
+            value: <span className="balance-card__value">0</span>,
+          },
+        ].map((card) => (
+          <div className="balance-card" key={card.label}>
+            <div className="balance-card__info-slot">
+              <InfoTooltip text={card.tooltip} />
+            </div>
+            <div className="balance-card__icon" style={{ width: card.iconWidth }}>
+              <img src={getAssetPath(card.icon)} alt="" />
+            </div>
+            <div className="balance-card__body">
+              <span className="balance-card__label">{card.label}</span>
+              {card.value}
+            </div>
           </div>
-          <div className="balance-card__body">
-            <span className="balance-card__label">Credit balance</span>
-            <img
-              src={getAssetPath('infinity-symbol.svg')}
-              alt="∞"
-              className="balance-card__infinity"
-            />
-          </div>
-        </div>
-        <div className="balance-card">
-          <div className="balance-card__icon" style={{ width: '60.56px' }}>
-            <img src={getAssetPath('card-available-balance.png')} alt="" />
-          </div>
-          <div className="balance-card__body">
-            <span className="balance-card__label">Available balance</span>
-            <img
-              src={getAssetPath('infinity-symbol.svg')}
-              alt="∞"
-              className="balance-card__infinity"
-            />
-          </div>
-        </div>
-        <div className="balance-card">
-          <div className="balance-card__icon" style={{ width: '55.35px' }}>
-            <img src={getAssetPath('card-upper-settlement.png')} alt="" />
-          </div>
-          <div className="balance-card__body">
-            <span className="balance-card__label">Upper settlment</span>
-            <span className="balance-card__value">1,933,939.00</span>
-          </div>
-        </div>
-        <div className="balance-card">
-          <div className="balance-card__icon" style={{ width: '60.3px' }}>
-            <img src={getAssetPath('card-lower-settlement.png')} alt="" />
-          </div>
-          <div className="balance-card__body">
-            <span className="balance-card__label">Lower settlment</span>
-            <span className="balance-card__value">1,933,939.00</span>
-          </div>
-        </div>
-        <div className="balance-card">
-          <div className="balance-card__icon" style={{ width: '59.42px' }}>
-            <img src={getAssetPath('card-total-commission.png')} alt="" />
-          </div>
-          <div className="balance-card__body">
-            <span className="balance-card__label">Total comission</span>
-            <span className="balance-card__value">0</span>
-          </div>
-        </div>
+        ))}
       </div>
 
       <div className="dashboard-page__stats-bar">
