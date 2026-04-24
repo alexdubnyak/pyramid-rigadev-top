@@ -25,3 +25,6 @@ dist-ssr
 
 # Deploy credentials
 .env.deploy
+
+# Claude Code local settings
+.claude/
