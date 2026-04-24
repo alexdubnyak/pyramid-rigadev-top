@@ -1,7 +1,7 @@
 .table-container {
   width: 100%;
   overflow-x: auto;
-  background-color: var(--color-background);
+  background-color: var(--table-row-bg);
 }
 
 .table {
@@ -30,23 +30,27 @@
 }
 
 .table__body {
-  background-color: var(--color-background);
+  background-color: var(--table-row-bg);
 }
 
 .table__row {
   transition: background-color var(--transition-fast);
 }
 
+.table__row--clickable {
+  cursor: pointer;
+}
+
 .table__row:hover {
-  background-color: var(--color-hover);
+  background-color: var(--table-row-hover-bg);
 }
 
 .table__row:nth-child(even) {
-  background-color: var(--color-background-alt);
+  background-color: var(--table-row-bg);
 }
 
 .table__row:nth-child(even):hover {
-  background-color: var(--color-hover);
+  background-color: var(--table-row-hover-bg);
 }
 
 .table__cell {

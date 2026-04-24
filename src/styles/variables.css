@@ -8,18 +8,21 @@
   --base-color-secondary: #363636;
   --base-color-white: #FFFFFF;
   --base-color-gray-50: #F5F7FB;
+  --base-color-page-bg: #f6f5f4;
   --base-color-gray-100: #F6F8FF;
   --base-color-gray-200: #E8ECFC;
   --base-color-gray-300: #EDF1FF;
   --base-color-gray-400: #E3E7F5;
   --base-color-gray-700: #6C6B6B;
-  --base-color-gray-900: #1E1E1E;
+  --base-color-gray-900: #212121;
   
-  /* Цвета из Figma */
-  --base-color-sidebar-bg: #f2f1ec;
-  --base-color-active-yellow: #efff42;
-  --base-color-active-orange: #ffc5a6;
-  --base-color-border-beige: #e9e6d8;
+  /* Акценты UI (Riga 365 / светлая тема) */
+  --base-color-surface-panel: #f2f1ec;
+  --base-color-sidebar-bg: var(--base-color-surface-panel);
+  --base-color-active-orange: #ffcdbc;
+  --base-color-border-beige: #dedcd6;
+  /** Нейтральный серый ховер (без синего оттенка) */
+  --base-color-hover-surface: #e5e4df;
   
   /* Базовые размеры */
   --base-spacing-1: 4px;
@@ -60,17 +63,17 @@
   --color-primary: var(--base-color-primary);
   --color-secondary: var(--base-color-secondary);
   --color-background: var(--base-color-white);
-  --color-background-alt: var(--base-color-gray-100);
-  --color-background-page: var(--base-color-gray-50);
+  --color-background-panel: var(--base-color-surface-panel);
+  --color-background-alt: var(--color-background-panel);
+  --color-background-page: var(--base-color-page-bg);
   --color-background-sidebar: var(--base-color-sidebar-bg);
   --color-border: var(--base-color-border-beige);
   --color-border-sidebar: var(--base-color-border-beige);
   --color-text-primary: var(--base-color-gray-900);
   --color-text-secondary: var(--base-color-gray-900);
   --color-text-muted: rgba(0, 0, 0, 0.54);
-  --color-hover: var(--base-color-gray-300);
+  --color-hover: var(--base-color-white);
   --color-active: var(--base-color-gray-200);
-  --color-active-yellow: var(--base-color-active-yellow);
   --color-active-orange: var(--base-color-active-orange);
   --color-shadow: rgba(108, 93, 211, 0.1);
   --color-shadow-light: rgba(0, 0, 0, 0.05);
@@ -101,7 +104,7 @@
   --input-border-width: 1px;
   --input-border-color: var(--color-border);
   --input-border-radius: var(--base-radius-sm);
-  --input-bg-color: var(--color-background);
+  --input-bg-color: var(--base-color-white);
   --input-text-color: var(--color-text-primary);
 
   /* Радиусы */
@@ -143,19 +146,19 @@
   --table-padding-x: var(--base-spacing-4);
   --table-padding-y: var(--base-spacing-2);
   --table-border-color: var(--color-border-sidebar);
-  --table-header-bg: var(--color-background);
+  --table-header-bg: var(--color-background-panel);
   --table-header-font-size: var(--base-font-md);
-  --table-header-font-weight: var(--base-weight-medium);
-  --table-header-color: var(--color-text-secondary);
-  --table-row-bg: var(--color-background);
+  --table-header-font-weight: var(--base-weight-bold);
+  --table-header-color: var(--color-text-primary);
+  --table-row-bg: var(--color-background-panel);
   --table-row-hover-bg: var(--color-hover);
   
   /* Блоки/Карточки */
   --card-padding: var(--base-spacing-4);
   --card-gap: var(--base-spacing-3);
   --card-border-radius: var(--base-radius-md);
-  --card-bg-color: var(--color-background);
-  --card-shadow: var(--shadow-sm);
+  --card-bg-color: var(--color-background-panel);
+  --card-shadow: none;
   
   /* Sidebar */
   --sidebar-padding: var(--base-spacing-2);
@@ -171,7 +174,7 @@
   --sidebar-submenu-padding-left: var(--base-spacing-6);
   --sidebar-submenu-item-height: 36px;
   --sidebar-submenu-border-width: 2px;
-  --sidebar-submenu-font-size: var(--base-font-sm);
+  --sidebar-submenu-font-size: var(--sidebar-item-font-size);
   --sidebar-user-name-font-size: var(--base-font-md);
   --sidebar-user-company-font-size: var(--base-font-sm);
   
@@ -182,15 +185,15 @@
   
   /* Stats Bar */
   --stats-bar-padding: var(--base-spacing-3);
-  --stats-bar-gap: var(--base-spacing-8);
+  --stats-bar-gap: var(--base-spacing-4);
   --stats-item-font-size: var(--base-font-md);
 
   /* Переходы */
   --transition-fast: var(--base-transition-fast);
   --transition-normal: var(--base-transition-normal);
 
-  /* Тени */
-  --shadow-sm: 0 1px 3px var(--color-shadow);
-  --shadow-md: 0 2px 8px var(--color-shadow);
-  --shadow-lg: 0 4px 16px var(--color-shadow);
+  /* Тени (отключены) */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
 }

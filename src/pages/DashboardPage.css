@@ -8,6 +8,11 @@
   overflow-y: auto;
 }
 
+/* Без отдельного «активного» цвета при нажатии — как обычный серый ховер */
+.dashboard-page .icon-button:active {
+  background-color: var(--color-hover);
+}
+
 .dashboard-page__stats-bar {
   display: flex;
   align-items: center;
@@ -45,7 +50,7 @@
 }
 
 .dashboard-page__stats-bar .dashboard-page__refresh-button:active {
-  background-color: var(--color-active);
+  background-color: var(--color-hover);
 }
 
 .dashboard-page__stats-bar .dashboard-page__game-logo {
@@ -75,7 +80,7 @@
   display: flex;
   gap: var(--spacing-xs);
   padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--color-background);
+  background-color: var(--color-background-panel);
   border-bottom: 1px solid var(--color-border-sidebar);
 }
 
@@ -103,13 +108,6 @@
 
 .dashboard-page__tab:hover {
   background-color: var(--color-hover);
-}
-
-.dashboard-page__tab--active {
-  background-color: var(--color-primary);
-  color: var(--color-background);
-  border-color: var(--color-primary);
-  box-shadow: 0 2px 8px rgba(108, 93, 211, 0.2);
 }
 
 .dashboard-page__content-header {

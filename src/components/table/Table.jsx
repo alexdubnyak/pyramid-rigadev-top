@@ -1,7 +1,7 @@
 import IconButton from '../common/IconButton';
 import './Table.css';
 
-const Table = ({ columns, data, actions }) => {
+const Table = ({ columns, data, actions, rowClassName, onRowClick }) => {
   return (
     <div className="table-container">
       <table className="table">
@@ -22,7 +22,13 @@ const Table = ({ columns, data, actions }) => {
         </thead>
         <tbody className="table__body">
           {data.map((row, rowIndex) => (
-            <tr key={rowIndex} className="table__row">
+            <tr
+              key={rowIndex}
+              className={['table__row', onRowClick ? 'table__row--clickable' : '', rowClassName?.(row, rowIndex)]
+                .filter(Boolean)
+                .join(' ')}
+              onClick={onRowClick ? () => onRowClick(row, rowIndex) : undefined}
+            >
               {columns.map((column, colIndex) => (
                 <td key={colIndex} className="table__cell">
                   {column.render ? column.render(row) : row[column.key]}

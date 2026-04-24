@@ -5,7 +5,7 @@
   gap: var(--spacing-md);
   padding: var(--spacing-md) var(--spacing-lg);
   height: var(--header-height);
-  background-color: var(--color-background);
+  background-color: var(--color-background-panel);
   border-bottom: 1px solid var(--color-border);
 }
 

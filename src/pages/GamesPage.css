@@ -27,7 +27,7 @@
 
 .games-page__tab--active {
   color: var(--color-primary);
-  background-color: var(--color-background);
+  background-color: var(--color-background-panel);
   border-color: var(--color-border);
 }
 

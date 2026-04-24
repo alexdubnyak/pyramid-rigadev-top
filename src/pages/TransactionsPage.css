@@ -30,7 +30,7 @@
   font-size: var(--font-size-sm);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-sm);
-  background-color: var(--color-background);
+  background-color: var(--color-background-panel);
 }
 
 .transactions-page__downloads {

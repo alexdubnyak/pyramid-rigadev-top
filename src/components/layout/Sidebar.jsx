@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Icon from '../common/Icon';
-import IconButton from '../common/IconButton';
 import './Sidebar.css';
 
 const isNavItemActive = (id, currentPage) => {
@@ -40,20 +39,22 @@ const Sidebar = ({ currentPage, onPageChange }) => {
 
   return (
     <aside className={`sidebar ${isCollapsed ? 'sidebar--collapsed' : ''}`}>
-      <div className="sidebar__header">
-        <IconButton 
-          icon="menu-open" 
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="sidebar__toggle"
-        />
+      <button
+        type="button"
+        className="sidebar__header"
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        aria-expanded={!isCollapsed}
+        aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+      >
+        <Icon name="menu-open" size="md" className="sidebar__header-icon" />
         {!isCollapsed && (
           <span className="sidebar__collapse-text">collapse</span>
         )}
-      </div>
+      </button>
 
       <nav className="sidebar__nav">
         <button
-          className={`sidebar__nav-item ${currentPage.startsWith('dashboard') ? 'sidebar__nav-item--active' : ''}`}
+          className="sidebar__nav-item"
           onClick={() => setIsDashboardOpen(!isDashboardOpen)}
         >
           <Icon name="dashboard" size="md" />

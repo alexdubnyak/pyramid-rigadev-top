@@ -42,7 +42,7 @@
   align-items: flex-end;
   gap: var(--spacing-lg);
   padding: var(--spacing-md);
-  background-color: var(--color-background);
+  background-color: var(--color-background-panel);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md);
 }
@@ -64,7 +64,7 @@
   font-size: var(--font-size-sm);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-sm);
-  background-color: var(--color-background);
+  background-color: var(--color-background-panel);
 }
 
 .balance-transactions-page__downloads {
