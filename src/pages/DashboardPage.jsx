@@ -75,6 +75,62 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
 
   return (
     <div className="dashboard-page">
+      <div className="dashboard-page__balance-cards">
+        <div className="balance-card">
+          <div className="balance-card__icon" style={{ width: '56px' }}>
+            <img src={getAssetPath('card-credit-balance.png')} alt="" />
+          </div>
+          <div className="balance-card__body">
+            <span className="balance-card__label">Credit balance</span>
+            <img
+              src={getAssetPath('infinity-symbol.svg')}
+              alt="∞"
+              className="balance-card__infinity"
+            />
+          </div>
+        </div>
+        <div className="balance-card">
+          <div className="balance-card__icon" style={{ width: '60.56px' }}>
+            <img src={getAssetPath('card-available-balance.png')} alt="" />
+          </div>
+          <div className="balance-card__body">
+            <span className="balance-card__label">Available balance</span>
+            <img
+              src={getAssetPath('infinity-symbol.svg')}
+              alt="∞"
+              className="balance-card__infinity"
+            />
+          </div>
+        </div>
+        <div className="balance-card">
+          <div className="balance-card__icon" style={{ width: '55.35px' }}>
+            <img src={getAssetPath('card-upper-settlement.png')} alt="" />
+          </div>
+          <div className="balance-card__body">
+            <span className="balance-card__label">Upper settlment</span>
+            <span className="balance-card__value">1,933,939.00</span>
+          </div>
+        </div>
+        <div className="balance-card">
+          <div className="balance-card__icon" style={{ width: '60.3px' }}>
+            <img src={getAssetPath('card-lower-settlement.png')} alt="" />
+          </div>
+          <div className="balance-card__body">
+            <span className="balance-card__label">Lower settlment</span>
+            <span className="balance-card__value">1,933,939.00</span>
+          </div>
+        </div>
+        <div className="balance-card">
+          <div className="balance-card__icon" style={{ width: '59.42px' }}>
+            <img src={getAssetPath('card-total-commission.png')} alt="" />
+          </div>
+          <div className="balance-card__body">
+            <span className="balance-card__label">Total comission</span>
+            <span className="balance-card__value">0</span>
+          </div>
+        </div>
+      </div>
+
       <div className="dashboard-page__stats-bar">
         <div className="dashboard-page__game-info">
           <button className="dashboard-page__refresh-button">
