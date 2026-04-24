@@ -13,6 +13,72 @@
   background-color: var(--color-hover);
 }
 
+.dashboard-page__balance-cards {
+  display: flex;
+  gap: 10px;
+  padding-right: 16px;
+  align-items: flex-start;
+}
+
+.balance-card {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background-color: #f2f1ec;
+  border: 1px solid #dedcd6;
+  border-radius: 12px;
+  padding: 10px 30px 10px 20px;
+}
+
+.balance-card__icon {
+  height: 67px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.balance-card__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.balance-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.balance-card__label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: normal;
+  color: #000;
+  white-space: nowrap;
+}
+
+.balance-card__value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: normal;
+  color: #ec4e18;
+  white-space: nowrap;
+}
+
+.balance-card__infinity {
+  height: 15px;
+  width: 46px;
+  display: block;
+}
+
 .dashboard-page__stats-bar {
   display: flex;
   align-items: center;
