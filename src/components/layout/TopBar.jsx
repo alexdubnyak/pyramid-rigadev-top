@@ -29,7 +29,7 @@ const TopBar = () => {
 
         <div className="topbar__balance">
           <span>Balance:</span>
-          <Icon name="infinity" size="md" />
+          <span className="topbar__balance-value">Unlimited</span>
         </div>
 
         <button className="topbar__theme">

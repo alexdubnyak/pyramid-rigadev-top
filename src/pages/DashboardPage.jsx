@@ -83,11 +83,11 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
             iconWidth: '56px',
             label: 'Credit balance',
             tooltip:
-              'Total credit limit assigned to your account (profile field "limit"). This value does not change when you adjust the dashboard period above. Super admin: there is no finite credit limit — the card shows ∞.',
+              'Total credit limit assigned to your account (profile field "limit"). This value does not change when you adjust the dashboard period above. Super admin: there is no finite credit limit — the card shows "Unlimited".',
             value: (
               <img
                 src={getAssetPath('infinity-symbol.svg')}
-                alt="∞"
+                alt="Unlimited"
                 className="balance-card__infinity"
               />
             ),
@@ -97,11 +97,11 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
             iconWidth: '60.56px',
             label: 'Available balance',
             tooltip:
-              'Remaining credit: your limit minus used limit (limit - usedLimit). Super admin: unlimited — shown as ∞.',
+              'Remaining credit: your limit minus used limit (limit - usedLimit). Super admin: unlimited — shown as "Unlimited".',
             value: (
               <img
                 src={getAssetPath('infinity-symbol.svg')}
-                alt="∞"
+                alt="Unlimited"
                 className="balance-card__infinity"
               />
             ),
