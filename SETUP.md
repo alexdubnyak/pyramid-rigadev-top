@@ -105,6 +105,35 @@ GH_HOST=github.com gh pr create --repo alexdubnyak/pyramid-rigadev-top ...
 
 Если всё-таки нужен direct push в master — попросить Claude, получить permission dialog, одобрить вручную.
 
+### Стандартный workflow «push + PR + merge»
+
+Когда пользователь говорит «сделай пуш» / «создай PR и смерджи» — выполнять последовательно:
+
+```bash
+# 1. Создать фич-ветку
+git checkout -b feat/<имя>
+
+# 2. Закоммитить
+git add <files>
+git commit -m "..."
+
+# 3. Запушить
+GH_HOST=github.com git push -u origin feat/<имя>
+
+# 4. Создать PR
+GH_HOST=github.com gh pr create --repo alexdubnyak/pyramid-rigadev-top \
+  --title "..." --body "..."
+
+# 5. Смерджить (squash) и удалить ветку
+GH_HOST=github.com gh pr merge <PR-номер> --repo alexdubnyak/pyramid-rigadev-top \
+  --squash --delete-branch
+
+# 6. Вернуться на master и подтянуть merge
+git checkout master && git pull
+```
+
+Префикс `GH_HOST=github.com` обязателен, если активный gh-хост — корпоративный (`graebert.ghe.com`).
+
 ## 5. Pencil MCP (опционально)
 
 Для работы с `.pen` файлами (альтернатива Figma для локальных дизайнов). Установить [Pencil.app](https://pencil.app/) и добавить в `~/.claude.json`:
