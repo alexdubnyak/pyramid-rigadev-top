@@ -82,6 +82,11 @@
   color: var(--color-text-primary);
 }
 
+.topbar__balance-value {
+  font-weight: var(--base-weight-semibold);
+  color: var(--color-text-primary);
+}
+
 .topbar__theme,
 .topbar__logout {
   display: flex;
