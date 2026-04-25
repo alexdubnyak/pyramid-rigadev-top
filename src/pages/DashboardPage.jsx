@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Icon from '../components/common/Icon';
 import IconButton from '../components/common/IconButton';
 import InfoTooltip from '../components/common/InfoTooltip';
+import DatePicker from '../components/common/DatePicker';
 import Table from '../components/table/Table';
 import Pagination from '../components/table/Pagination';
 import { getAssetPath } from '../utils/getAssetPath';
@@ -77,11 +78,16 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
   return (
     <div className="dashboard-page">
       <div className="dashboard-page__balance-cards">
+        <div className="dashboard-period-card">
+          <span className="dashboard-period-card__title">Dashboard period</span>
+          <DatePicker label="From" value={minDate} onChange={setMinDate} />
+          <DatePicker label="To" value={maxDate} onChange={setMaxDate} />
+        </div>
         {[
           {
             icon: 'card-credit-balance.png',
             iconWidth: '56px',
-            label: 'Credit balance',
+            label: 'Credit\nbalance',
             tooltip:
               'Total credit limit assigned to your account (profile field "limit"). This value does not change when you adjust the dashboard period above. Super admin: there is no finite credit limit — the card shows "Unlimited".',
             value: (
@@ -95,7 +101,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
           {
             icon: 'card-available-balance.png',
             iconWidth: '60.56px',
-            label: 'Available balance',
+            label: 'Available\nbalance',
             tooltip:
               'Remaining credit: your limit minus used limit (limit - usedLimit). Super admin: unlimited — shown as "Unlimited".',
             value: (
@@ -109,7 +115,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
           {
             icon: 'card-upper-settlement.png',
             iconWidth: '55.35px',
-            label: 'Upper settlement',
+            label: 'Upper\nsettlement',
             tooltip:
               'Your settlement with the upper line. Snapshot from your profile; it is not filtered by the selected date range. Refresh the page to get the latest value after back-office changes.',
             value: <span className="balance-card__value">1,933,939.00</span>,
@@ -117,7 +123,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
           {
             icon: 'card-lower-settlement.png',
             iconWidth: '60.3px',
-            label: 'Lower settlement',
+            label: 'Lower\nsettlement',
             tooltip:
               'Aggregated settlement summed over all users in your downline tree. It is not filtered by the selected date range.',
             value: <span className="balance-card__value">1,933,939.00</span>,
@@ -125,7 +131,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
           {
             icon: 'card-total-commission.png',
             iconWidth: '59.42px',
-            label: 'Total commission',
+            label: 'Total\ncommission',
             tooltip:
               'Total commission across all games for the selected Dashboard period (top date range). Per-game stats use the Period range in the Game statistics block below.',
             value: <span className="balance-card__value">0</span>,
@@ -171,22 +177,8 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
       <div className="dashboard-page__content">
         <div className="dashboard-page__content-header">
           <div className="dashboard-page__date-filters">
-            <div className="dashboard-page__date-field dashboard-page__date-field--horizontal">
-              <label>Minimum calculation date</label>
-              <input 
-                type="date" 
-                value={minDate} 
-                onChange={(e) => setMinDate(e.target.value)}
-              />
-            </div>
-            <div className="dashboard-page__date-field dashboard-page__date-field--horizontal">
-              <label>Maximum calculation date</label>
-              <input 
-                type="date" 
-                value={maxDate} 
-                onChange={(e) => setMaxDate(e.target.value)}
-              />
-            </div>
+            <DatePicker label="From" value={minDate} onChange={setMinDate} />
+            <DatePicker label="To" value={maxDate} onChange={setMaxDate} />
           </div>
 
           <div className="dashboard-page__toolbar">

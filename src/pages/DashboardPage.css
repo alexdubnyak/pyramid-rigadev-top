@@ -17,20 +17,43 @@
   display: flex;
   gap: 10px;
   padding-right: 16px;
-  align-items: flex-start;
+  align-items: stretch;
+}
+
+.dashboard-period-card {
+  flex: 0 0 162px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 30px 10px 10px;
+  background-color: #f2f1ec;
+  border: 1px solid #dedcd6;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.dashboard-period-card__title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: normal;
+  color: #000;
+  padding-left: 8px;
 }
 
 .balance-card {
   position: relative;
   flex: 1 0 0;
   min-width: 0;
+  height: 125px;
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  align-items: center;
+  gap: 10px;
   background-color: #f2f1ec;
   border: 1px solid #dedcd6;
   border-radius: 12px;
-  padding: 10px 30px 10px 20px;
+  padding: 10px 10px 10px 14px;
+  box-sizing: border-box;
 }
 
 .balance-card__icon {
@@ -47,22 +70,23 @@
 }
 
 .balance-card__body {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  align-self: stretch;
-  flex-shrink: 0;
+  min-width: 0;
 }
 
 .balance-card__label {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 12px;
-  line-height: normal;
+  font-size: 14px;
+  line-height: 1.2;
   color: #000;
-  white-space: nowrap;
+  white-space: pre-line;
+  text-align: center;
 }
 
 .balance-card__info-slot {
@@ -89,13 +113,17 @@
 .dashboard-page__stats-bar {
   display: flex;
   align-items: center;
-  gap: var(--stats-bar-gap);
+  gap: 24px;
   padding: var(--stats-bar-padding);
   background-color: var(--card-bg-color);
   border: 1px solid var(--color-border-sidebar);
   border-radius: var(--card-border-radius);
   flex-wrap: wrap;
   box-shadow: var(--card-shadow);
+}
+
+.dashboard-page__stats-bar .dashboard-page__game-info + .dashboard-page__stat-item {
+  margin-left: auto;
 }
 
 .dashboard-page__game-info {
@@ -198,7 +226,8 @@
 
 .dashboard-page__date-filters {
   display: flex;
-  gap: var(--spacing-md);
+  gap: 16px;
+  align-items: center;
 }
 
 .dashboard-page__date-field {
