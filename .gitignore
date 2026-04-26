@@ -26,5 +26,5 @@ dist-ssr
 # Deploy credentials
 .env.deploy
 
-# Claude Code local settings
-.claude/
+# Claude Code local-only settings (commands/agents/skills остаются в репозитории)
+.claude/settings.local.json
