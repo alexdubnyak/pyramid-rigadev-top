@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(open *)",
+      "Bash(npx tsc *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git fetch *)",
+      "Bash(git merge *)",
+      "Bash(git rebase *)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr merge *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr list *)",
+      "Edit(.claude/settings.json)",
+      "Write(.claude/settings.json)",
+      "Edit(.claude/commands/**)",
+      "Write(.claude/commands/**)",
+      "mcp__pencil__get_screenshot",
+      "mcp__pencil__batch_get",
+      "mcp__pencil__snapshot_layout",
+      "mcp__pencil__find_empty_space_on_canvas",
+      "mcp__pencil__get_guidelines",
+      "mcp__figma__get_design_context",
+      "mcp__figma__get_screenshot"
+    ]
+  }
+}
