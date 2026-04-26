@@ -193,19 +193,27 @@ const UsersPage = ({
         showAddButton={mode === 'list'}
         onAddClick={onAddClick}
       />
-      <TableToolbar title={mode === 'sub' ? 'Sub-users' : 'Users'} stats={stats} />
-      <Table
-        columns={columns}
-        data={data}
-        actions={mode === 'sub' ? actionsSub : actionsMain}
-      />
-      <Pagination
-        currentPage={currentPage}
-        totalPages={1}
-        onPageChange={setCurrentPage}
-        rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={setRowsPerPage}
-      />
+      <div className="users-page__content">
+        <div className="users-page__content-top">
+          <TableToolbar
+            title={mode === 'sub' ? 'Sub-users' : 'Users'}
+            stats={stats}
+            icon="users-icon.png"
+          />
+          <Table
+            columns={columns}
+            data={data}
+            actions={mode === 'sub' ? actionsSub : actionsMain}
+          />
+        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={1}
+          onPageChange={setCurrentPage}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={setRowsPerPage}
+        />
+      </div>
     </div>
   );
 };
