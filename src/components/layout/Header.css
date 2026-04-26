@@ -1,19 +1,27 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-md);
-  padding: var(--spacing-md) var(--spacing-lg);
-  height: var(--header-height);
+  gap: 20px;
+  padding: 16px;
+  height: 64px;
   background-color: var(--color-background-panel);
-  border-bottom: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-sidebar);
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .header__search {
   flex: 1;
-  max-width: 600px;
+  min-width: 0;
 }
 
 .header__add-button {
   white-space: nowrap;
+  background-color: var(--color-active-orange);
+  border-color: var(--color-active-orange);
+}
+
+.header__add-button:hover:not(:disabled) {
+  background-color: #ffbfa6;
+  border-color: #ffbfa6;
 }

@@ -1,10 +1,20 @@
 import IconButton from '../common/IconButton';
+import { getAssetPath } from '../../utils/getAssetPath';
 import './TableToolbar.css';
 
-const TableToolbar = ({ stats, title }) => {
+const TableToolbar = ({ stats, title, icon }) => {
   return (
     <div className="table-toolbar">
-      <div className="table-toolbar__title">{title}</div>
+      <div className="table-toolbar__title">
+        {icon && (
+          <img
+            src={getAssetPath(icon)}
+            alt=""
+            className="table-toolbar__title-icon"
+          />
+        )}
+        <span>{title}</span>
+      </div>
       <div className="table-toolbar__stats">
         {stats.map((stat, index) => (
           <span key={index} className="table-toolbar__stat">
