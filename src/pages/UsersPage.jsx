@@ -198,7 +198,7 @@ const UsersPage = ({
           <TableToolbar
             title={mode === 'sub' ? 'Sub-users' : 'Users'}
             stats={stats}
-            icon="users-icon.png"
+            icon="users.png"
           />
           <Table
             columns={columns}

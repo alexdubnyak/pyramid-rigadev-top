@@ -46,7 +46,7 @@ const TransactionsPage = () => {
         onSearch={(e) => setSearchValue(e.target.value)}
         showAddButton={false}
       />
-      <TableToolbar title="Transactions" stats={[]} />
+      <TableToolbar title="Transactions" stats={[]} icon="transactions.png" />
       <div className="transactions-page__filters">
         <div className="transactions-page__field">
           <label htmlFor="min-date-stats">Minimum date</label>

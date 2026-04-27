@@ -2,13 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--base-spacing-1) var(--base-spacing-4);
+  padding: var(--base-spacing-2) var(--base-spacing-4);
   margin: var(--base-spacing-4) var(--base-spacing-4) 0 0;
   background-color: var(--card-bg-color);
   border: 1px solid var(--color-border-sidebar);
   border-radius: var(--card-border-radius);
   box-shadow: var(--card-shadow);
-  height: 40px;
+  height: 52px;
 }
 
 .topbar__left {
@@ -41,11 +41,18 @@
 }
 
 .topbar__user-avatar {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.topbar__icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .topbar__user-info {
