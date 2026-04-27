@@ -3,7 +3,7 @@ import IconButton from '../common/IconButton';
 import { getAssetPath } from '../../utils/getAssetPath';
 import './TopBar.css';
 
-const TopBar = () => {
+const TopBar = ({ theme = 'light', onToggleTheme }) => {
   return (
     <div className="topbar">
       <div className="topbar__left">
@@ -32,9 +32,14 @@ const TopBar = () => {
           <span className="topbar__balance-value">Unlimited</span>
         </div>
 
-        <button className="topbar__theme">
+        <button
+          type="button"
+          className="topbar__theme"
+          onClick={onToggleTheme}
+          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        >
           <Icon name="dark-mode" size="md" />
-          <span>Theme mode</span>
+          <span>{theme === 'dark' ? 'Light mode' : 'Dark mode'}</span>
         </button>
 
         <button className="topbar__logout">

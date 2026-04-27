@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Sidebar from './components/layout/Sidebar';
 import TopBar from './components/layout/TopBar';
 import Modal from './components/common/Modal';
@@ -16,7 +16,15 @@ import GamesPage from './pages/GamesPage';
 import './App.css';
 
 function App() {
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
   const [currentPage, setCurrentPage] = useState('dashboard-riga');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
   const [usersSubParent, setUsersSubParent] = useState(null);
   const [usersSubFrom, setUsersSubFrom] = useState('users');
   const [cashHistoryUser, setCashHistoryUser] = useState(null);
@@ -117,7 +125,7 @@ function App() {
     <div className="app">
       <Sidebar currentPage={currentPage} onPageChange={handleNavChange} />
       <div className="app__main">
-        <TopBar />
+        <TopBar theme={theme} onToggleTheme={toggleTheme} />
         <main className="app__content">
           {renderPage()}
         </main>

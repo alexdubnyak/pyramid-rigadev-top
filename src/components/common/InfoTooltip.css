@@ -4,7 +4,7 @@
   justify-content: center;
   width: 16px;
   height: 16px;
-  color: #6c6b6b;
+  color: var(--color-text-secondary);
   cursor: help;
   outline: none;
   transition: color 0.15s ease;
@@ -12,7 +12,7 @@
 
 .info-tooltip:hover,
 .info-tooltip:focus {
-  color: #212121;
+  color: var(--color-text-primary);
 }
 
 .info-tooltip img {

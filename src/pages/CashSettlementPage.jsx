@@ -30,6 +30,13 @@ const CashSettlementPage = ({ onOpenBalanceHistory }) => {
     },
   ];
 
+  const stats = [
+    { label: 'Total balance', value: '15,650.50' },
+    { label: 'Total accounts', value: '3' },
+    { label: 'Settled today', value: '0' },
+    { label: 'Pending', value: '1' },
+  ];
+
   return (
     <div className="cash-settlement-page">
       <Header
@@ -37,15 +44,23 @@ const CashSettlementPage = ({ onOpenBalanceHistory }) => {
         onSearch={(e) => setSearchValue(e.target.value)}
         showAddButton={false}
       />
-      <TableToolbar title="Cash settlement" stats={[]} />
-      <Table columns={columns} data={mockData} actions={actions} />
-      <Pagination
-        currentPage={currentPage}
-        totalPages={1}
-        onPageChange={setCurrentPage}
-        rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={setRowsPerPage}
-      />
+      <div className="cash-settlement-page__content">
+        <div className="cash-settlement-page__content-top">
+          <TableToolbar
+            title="Cash settlement"
+            stats={stats}
+            icon="cash-settlement.png"
+          />
+          <Table columns={columns} data={mockData} actions={actions} />
+        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={1}
+          onPageChange={setCurrentPage}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={setRowsPerPage}
+        />
+      </div>
     </div>
   );
 };

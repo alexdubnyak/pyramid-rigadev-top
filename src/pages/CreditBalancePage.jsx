@@ -55,6 +55,13 @@ const CreditBalancePage = ({ onViewSubUsers }) => {
     },
   ];
 
+  const stats = [
+    { label: 'Total credit limit', value: '2,500,000.00' },
+    { label: 'Total available', value: '1,850,000.00' },
+    { label: 'Total used', value: '650,000.00' },
+    { label: 'Total locked', value: '0' },
+  ];
+
   return (
     <div className="credit-balance-page">
       {toast && <Toast message={toast} onDismiss={dismissToast} />}
@@ -71,15 +78,23 @@ const CreditBalancePage = ({ onViewSubUsers }) => {
         onSearch={(e) => setSearchValue(e.target.value)}
         showAddButton={false}
       />
-      <TableToolbar title="Credit balance" stats={[]} />
-      <Table columns={columns} data={mockData} actions={actions} />
-      <Pagination
-        currentPage={currentPage}
-        totalPages={1}
-        onPageChange={setCurrentPage}
-        rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={setRowsPerPage}
-      />
+      <div className="credit-balance-page__content">
+        <div className="credit-balance-page__content-top">
+          <TableToolbar
+            title="Credit balance"
+            stats={stats}
+            icon="credit-balance.png"
+          />
+          <Table columns={columns} data={mockData} actions={actions} />
+        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={1}
+          onPageChange={setCurrentPage}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={setRowsPerPage}
+        />
+      </div>
     </div>
   );
 };
