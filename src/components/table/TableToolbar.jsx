@@ -2,7 +2,7 @@ import IconButton from '../common/IconButton';
 import { getAssetPath } from '../../utils/getAssetPath';
 import './TableToolbar.css';
 
-const TableToolbar = ({ stats, title, icon }) => {
+const TableToolbar = ({ stats, title, icon, children }) => {
   return (
     <div className="table-toolbar">
       <div className="table-toolbar__title">
@@ -15,6 +15,11 @@ const TableToolbar = ({ stats, title, icon }) => {
         )}
         <span>{title}</span>
       </div>
+      {children && (
+        <div className="table-toolbar__extra">
+          {children}
+        </div>
+      )}
       <div className="table-toolbar__stats">
         {stats.map((stat, index) => (
           <span key={index} className="table-toolbar__stat">

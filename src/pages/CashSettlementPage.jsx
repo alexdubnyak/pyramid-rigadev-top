@@ -49,7 +49,7 @@ const CashSettlementPage = ({ onOpenBalanceHistory }) => {
           <TableToolbar
             title="Cash settlement"
             stats={stats}
-            icon="cash-settlement.png"
+            icon="cash-settlement-sidebar.png"
           />
           <Table columns={columns} data={mockData} actions={actions} />
         </div>

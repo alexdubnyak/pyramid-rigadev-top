@@ -83,7 +83,7 @@ const CreditBalancePage = ({ onViewSubUsers }) => {
           <TableToolbar
             title="Credit balance"
             stats={stats}
-            icon="credit-balance.png"
+            icon="credit-balance-sidebar.png"
           />
           <Table columns={columns} data={mockData} actions={actions} />
         </div>

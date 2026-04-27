@@ -3,6 +3,7 @@ import Icon from '../components/common/Icon';
 import Table from '../components/table/Table';
 import Pagination from '../components/table/Pagination';
 import Button from '../components/common/Button';
+import { getAssetPath } from '../utils/getAssetPath';
 import './BalanceTransactionsPage.css';
 
 const BalanceTransactionsPage = ({ user, onBack }) => {
@@ -44,7 +45,12 @@ const BalanceTransactionsPage = ({ user, onBack }) => {
           <span>Back</span>
         </button>
         <h1 className="balance-transactions-page__title">
-          Balance transactions{user?.username ? ` — ${user.username}` : ''}
+          <img
+            src={getAssetPath('cash-settlement-sidebar.png')}
+            alt=""
+            className="balance-transactions-page__title-icon"
+          />
+          <span>Balance transactions{user?.username ? ` — ${user.username}` : ''}</span>
         </h1>
       </div>
 

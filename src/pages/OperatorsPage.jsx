@@ -71,7 +71,7 @@ const OperatorsPage = () => {
         onAddClick={() => setModal('add')}
         addButtonLabel="Add Operator"
       />
-      <TableToolbar title="Operators" stats={[]} icon="operators.png" />
+      <TableToolbar title="Operators" stats={[]} icon="operator-sidebar.png" />
       <Table columns={columns} data={mockRows} actions={actions} />
       <Pagination
         currentPage={currentPage}

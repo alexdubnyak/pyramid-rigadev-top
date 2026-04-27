@@ -22,10 +22,17 @@
 }
 
 .table-toolbar__title-icon {
-  width: 62px;
-  height: 62px;
-  object-fit: cover;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
   flex-shrink: 0;
+}
+
+.table-toolbar__extra {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex: 0 0 auto;
 }
 
 .table-toolbar__stats {

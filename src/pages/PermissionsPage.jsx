@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import IconButton from '../components/common/IconButton';
+import { getAssetPath } from '../utils/getAssetPath';
 import './PermissionsPage.css';
 
 const GROUPS = [
@@ -38,7 +39,14 @@ const PermissionsPage = () => {
   return (
     <div className="permissions-page">
       <div className="permissions-page__header">
-        <h1 className="permissions-page__title">Permissions</h1>
+        <h1 className="permissions-page__title">
+          <img
+            src={getAssetPath('permissions-sidebar.png')}
+            alt=""
+            className="permissions-page__title-icon"
+          />
+          <span>Permissions</span>
+        </h1>
         <IconButton icon="add" className="permissions-page__add-group" />
       </div>
       <ul className="permissions-page__tree">

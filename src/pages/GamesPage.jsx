@@ -108,7 +108,7 @@ const GamesPage = () => {
           <div className="games-page__actions">
             <Button variant="secondary" size="sm" type="button">Request more Games</Button>
           </div>
-          <TableToolbar title="Games" stats={[]} icon="games.png" />
+          <TableToolbar title="Games" stats={[]} icon="games-sidebar.png" />
           <Table columns={gameColumns} data={gamesRows} />
         </>
       )}
@@ -124,7 +124,7 @@ const GamesPage = () => {
               <IconButton icon="filter" />
             </div>
           </div>
-          <TableToolbar title="Game groups" stats={[]} />
+          <TableToolbar title="Game groups" stats={[]} icon="games-sidebar.png" />
           <Table columns={groupColumns} data={groupRows} />
         </>
       )}
