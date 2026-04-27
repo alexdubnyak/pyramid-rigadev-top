@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Icon from '../common/Icon';
+import { getAssetPath } from '../../utils/getAssetPath';
 import './Sidebar.css';
 
 const isNavItemActive = (id, currentPage) => {
@@ -26,15 +27,15 @@ const Sidebar = ({ currentPage, onPageChange }) => {
   ];
 
   const menuItems = [
-    { id: 'users', icon: 'users', label: 'Users' },
-    { id: 'credit-balance', icon: 'credit-card', label: 'Credit balance' },
-    { id: 'cash-settlement', icon: 'cash-settlement', label: 'Cash settlement' },
-    { id: 'report', icon: 'report', label: 'Report' },
-    { id: 'transactions', icon: 'transactions', label: 'Transactions' },
-    { id: 'settings', icon: 'settings', label: 'Settings' },
-    { id: 'permissions', icon: 'permissions', label: 'Permissions' },
-    { id: 'operators', icon: 'operators', label: 'Operators' },
-    { id: 'games', icon: 'games', label: 'Games' },
+    { id: 'users', icon: 'users-sidebar.png', label: 'Users' },
+    { id: 'credit-balance', icon: 'credit-balance-sidebar.png', label: 'Credit balance' },
+    { id: 'cash-settlement', icon: 'cash-settlement-sidebar.png', label: 'Cash settlement' },
+    { id: 'report', icon: 'report-sidebar.png', label: 'Report' },
+    { id: 'transactions', icon: 'transactions-sidebar.png', label: 'Transactions' },
+    { id: 'settings', icon: 'settings-sidebar.png', label: 'Settings' },
+    { id: 'permissions', icon: 'permissions-sidebar.png', label: 'Permissions' },
+    { id: 'operators', icon: 'operator-sidebar.png', label: 'Operators' },
+    { id: 'games', icon: 'games-sidebar.png', label: 'Games' },
   ];
 
   return (
@@ -57,7 +58,11 @@ const Sidebar = ({ currentPage, onPageChange }) => {
           className="sidebar__nav-item"
           onClick={() => setIsDashboardOpen(!isDashboardOpen)}
         >
-          <Icon name="dashboard" size="md" />
+          <img
+            src={getAssetPath('dashboard-sidebar.png')}
+            alt=""
+            className="sidebar__nav-icon"
+          />
           {!isCollapsed && (
             <>
               <span>Dashboard</span>
@@ -86,7 +91,11 @@ const Sidebar = ({ currentPage, onPageChange }) => {
             className={`sidebar__nav-item ${isNavItemActive(item.id, currentPage) ? 'sidebar__nav-item--active' : ''}`}
             onClick={() => onPageChange(item.id)}
           >
-            <Icon name={item.icon} size="md" />
+            <img
+              src={getAssetPath(item.icon)}
+              alt=""
+              className="sidebar__nav-icon"
+            />
             {!isCollapsed && <span>{item.label}</span>}
           </button>
         ))}

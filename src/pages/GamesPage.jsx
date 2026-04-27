@@ -108,7 +108,7 @@ const GamesPage = () => {
           <div className="games-page__actions">
             <Button variant="secondary" size="sm" type="button">Request more Games</Button>
           </div>
-          <TableToolbar title="Games" stats={[]} />
+          <TableToolbar title="Games" stats={[]} icon="games.png" />
           <Table columns={gameColumns} data={gamesRows} />
         </>
       )}

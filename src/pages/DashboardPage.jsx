@@ -85,7 +85,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
         </div>
         {[
           {
-            icon: 'card-credit-balance.png',
+            icon: 'credit-balance.png',
             iconWidth: '56px',
             label: 'Credit\nbalance',
             tooltip:
@@ -99,7 +99,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
             ),
           },
           {
-            icon: 'card-available-balance.png',
+            icon: 'avalable-balance.png',
             iconWidth: '60.56px',
             label: 'Available\nbalance',
             tooltip:
@@ -113,7 +113,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
             ),
           },
           {
-            icon: 'card-upper-settlement.png',
+            icon: 'upper-settlement.png',
             iconWidth: '55.35px',
             label: 'Upper\nsettlement',
             tooltip:
@@ -121,7 +121,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
             value: <span className="balance-card__value">1,933,939.00</span>,
           },
           {
-            icon: 'card-lower-settlement.png',
+            icon: 'lower-settlemenbt.png',
             iconWidth: '60.3px',
             label: 'Lower\nsettlement',
             tooltip:
@@ -129,7 +129,7 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
             value: <span className="balance-card__value">1,933,939.00</span>,
           },
           {
-            icon: 'card-total-commission.png',
+            icon: 'total-comission.png',
             iconWidth: '59.42px',
             label: 'Total\ncommission',
             tooltip:

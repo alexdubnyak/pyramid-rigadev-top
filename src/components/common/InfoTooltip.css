@@ -19,6 +19,23 @@
   width: 16px;
   height: 16px;
   display: block;
+  /* SVG использует currentColor в stroke, но <img> игнорирует наш color — */
+  /* поэтому красим через filter, синхронно с .icon */
+  filter: brightness(0);
+}
+
+[data-theme="dark"] .info-tooltip img {
+  filter: brightness(0) invert(0.65);
+}
+
+.info-tooltip:hover img,
+.info-tooltip:focus img {
+  filter: brightness(0);
+}
+
+[data-theme="dark"] .info-tooltip:hover img,
+[data-theme="dark"] .info-tooltip:focus img {
+  filter: brightness(0) invert(0.85);
 }
 
 .info-tooltip__bubble {

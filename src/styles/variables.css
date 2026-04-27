@@ -204,31 +204,34 @@
    делалось одним атрибутом data-theme="dark" на <html>.
    ======================================== */
 [data-theme="dark"] {
-  /* Indigo-tinted dark: подобрана под брендовый --color-primary #5B4FC5
-     и цветные иконки разделов (фиолетовый/розовый/золотой). Тёплый акцент
-     (--color-active-orange) подсвечивается на холодном фоне. */
-  --color-background: #131228;
-  --color-background-page: #0a0918;
-  --color-background-panel: #131228;
+  /* Десатурированный нейтрально-тёплый dark с лёгким фиолетовым подтоном —
+     достаточно для брендового --color-primary, но без перенасыщенности.
+     Текст приглушён (не чисто-белый), фон осветлён — снижен контраст,
+     меньше нагрузка на глаза при долгом чтении. */
+  --color-background: #1c1c24;
+  --color-background-page: #16161d;
+  --color-background-panel: #21212a;
   --color-background-alt: var(--color-background-panel);
-  --color-background-sidebar: #0f0e21;
+  --color-background-sidebar: #18181f;
 
-  --color-border: #1f1d3d;
-  --color-border-sidebar: #1f1d3d;
+  --color-border: #2c2c36;
+  --color-border-sidebar: #2c2c36;
 
-  --color-text-primary: #e6e6ee;
-  --color-text-secondary: #aaa9bd;
-  --color-text-muted: rgba(230, 230, 238, 0.5);
+  --color-text-primary: #cfd0d9;
+  --color-text-secondary: #9596a1;
+  --color-text-muted: rgba(207, 208, 217, 0.45);
 
-  --color-hover: #1c1a3a;
-  --color-active: #25234a;
-  --color-active-orange: #5a3322;
+  /* hover/active заметно выделены, чтобы пользователь видел отклик */
+  --color-hover: #34343f;
+  --color-active: #45454f;
+  --color-active-orange: #6e3d29;
 
-  --color-shadow: rgba(0, 0, 0, 0.65);
-  --color-shadow-light: rgba(0, 0, 0, 0.4);
+  --color-shadow: rgba(0, 0, 0, 0.55);
+  --color-shadow-light: rgba(0, 0, 0, 0.3);
 
-  --input-bg-color: #17162e;
-  --input-border-color: #2c2a52;
+  /* инпуты: фон темнее панели + видимый бордер для отделения от карточек */
+  --input-bg-color: #14141b;
+  --input-border-color: #4a4a55;
   --input-text-color: var(--color-text-primary);
 
   --table-border-color: var(--color-border-sidebar);
@@ -238,4 +241,45 @@
   --table-header-color: var(--color-text-primary);
 
   --card-bg-color: var(--color-background-panel);
+
+  /* Скроллбары: приглушённый thumb, видимый только при hover */
+  --scrollbar-track: var(--color-background-page);
+  --scrollbar-thumb: #2a2a32;
+  --scrollbar-thumb-hover: #3d3d48;
+}
+
+/* Светлая тема — переменные скроллбаров */
+:root {
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: #c8c6be;
+  --scrollbar-thumb-hover: #aaa8a0;
+}
+
+/* Стилизация скроллбаров (WebKit + Firefox/новый Chromium) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 6px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
 }

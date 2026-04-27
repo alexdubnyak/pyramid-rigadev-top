@@ -5,7 +5,8 @@
 }
 
 [data-theme="dark"] .icon {
-  filter: brightness(0) invert(1);
+  /* invert(0.78) даёт мягкий off-white — совпадает с --color-text-primary */
+  filter: brightness(0) invert(0.78);
 }
 
 .icon--sm {

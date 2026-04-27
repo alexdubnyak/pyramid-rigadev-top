@@ -3,22 +3,19 @@
   width: 120px;
   height: 36px;
   padding: 0 10px;
-  background: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--color-border-sidebar);
+  border-radius: 6px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
   font-family: inherit;
-  transition: background-color 0.15s ease, border-radius 0.15s ease, border-color 0.15s ease;
+  transition: border-color 0.15s ease;
 }
 
-.date-picker:hover,
-.date-picker:active,
-.date-picker--open {
-  background-color: var(--color-hover);
-  border-radius: 6px;
+.date-picker:hover {
+  border-color: var(--color-text-muted);
 }
 
 .date-picker:focus-visible,
@@ -57,6 +54,12 @@
   height: 18px;
   flex-shrink: 0;
   pointer-events: none;
+  /* Тонируется как остальные иконки — Icon component использует тот же приём */
+  filter: brightness(0);
+}
+
+[data-theme="dark"] .date-picker__icon {
+  filter: brightness(0) invert(0.78);
 }
 
 .date-picker__popup {
