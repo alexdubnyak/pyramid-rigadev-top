@@ -4,6 +4,10 @@
   filter: brightness(0);
 }
 
+[data-theme="dark"] .icon {
+  filter: brightness(0) invert(1);
+}
+
 .icon--sm {
   width: var(--icon-size-sm);
   height: var(--icon-size-sm);

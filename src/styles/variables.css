@@ -197,3 +197,45 @@
   --shadow-md: none;
   --shadow-lg: none;
 }
+
+/* ========================================
+   ТЁМНАЯ ТЕМА
+   Переопределяем только семантические токены, чтобы переключение
+   делалось одним атрибутом data-theme="dark" на <html>.
+   ======================================== */
+[data-theme="dark"] {
+  /* Indigo-tinted dark: подобрана под брендовый --color-primary #5B4FC5
+     и цветные иконки разделов (фиолетовый/розовый/золотой). Тёплый акцент
+     (--color-active-orange) подсвечивается на холодном фоне. */
+  --color-background: #131228;
+  --color-background-page: #0a0918;
+  --color-background-panel: #131228;
+  --color-background-alt: var(--color-background-panel);
+  --color-background-sidebar: #0f0e21;
+
+  --color-border: #1f1d3d;
+  --color-border-sidebar: #1f1d3d;
+
+  --color-text-primary: #e6e6ee;
+  --color-text-secondary: #aaa9bd;
+  --color-text-muted: rgba(230, 230, 238, 0.5);
+
+  --color-hover: #1c1a3a;
+  --color-active: #25234a;
+  --color-active-orange: #5a3322;
+
+  --color-shadow: rgba(0, 0, 0, 0.65);
+  --color-shadow-light: rgba(0, 0, 0, 0.4);
+
+  --input-bg-color: #17162e;
+  --input-border-color: #2c2a52;
+  --input-text-color: var(--color-text-primary);
+
+  --table-border-color: var(--color-border-sidebar);
+  --table-header-bg: var(--color-background-panel);
+  --table-row-bg: var(--color-background-panel);
+  --table-row-hover-bg: var(--color-hover);
+  --table-header-color: var(--color-text-primary);
+
+  --card-bg-color: var(--color-background-panel);
+}

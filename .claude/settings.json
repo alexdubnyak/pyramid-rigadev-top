@@ -31,7 +31,15 @@
       "mcp__pencil__find_empty_space_on_canvas",
       "mcp__pencil__get_guidelines",
       "mcp__figma__get_design_context",
-      "mcp__figma__get_screenshot"
+      "mcp__figma__get_screenshot",
+      "mcp__figma__get_metadata",
+      "mcp__figma__get_variable_defs",
+      "mcp__figma-dev__get_design_context",
+      "mcp__figma-dev__get_screenshot",
+      "mcp__figma-dev__get_metadata",
+      "mcp__figma-dev__get_variable_defs",
+      "mcp__figma-dev__get_figjam",
+      "mcp__figma-dev__create_design_system_rules"
     ]
   }
 }

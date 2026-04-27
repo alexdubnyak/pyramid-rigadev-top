@@ -1,10 +1,10 @@
 .calendar {
   width: 252px;
   padding: 12px;
-  background-color: #ffffff;
-  border: 1px solid #dedcd6;
+  background-color: var(--color-background-panel);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(33, 33, 33, 0.12);
+  box-shadow: 0 8px 24px var(--color-shadow);
   font-family: 'Inter', sans-serif;
   user-select: none;
 }
@@ -19,7 +19,7 @@
 .calendar__title {
   font-size: 13px;
   font-weight: 600;
-  color: #212121;
+  color: var(--color-text-primary);
 }
 
 .calendar__nav {
@@ -33,14 +33,14 @@
   border-radius: 4px;
   font-size: 18px;
   line-height: 1;
-  color: #6c6b6b;
+  color: var(--color-text-secondary);
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .calendar__nav:hover {
   background-color: var(--color-hover);
-  color: #212121;
+  color: var(--color-text-primary);
 }
 
 .calendar__weekdays {
@@ -53,7 +53,7 @@
   text-align: center;
   font-size: 10px;
   font-weight: 500;
-  color: #6c6b6b;
+  color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.4px;
   padding: 4px 0;
@@ -76,7 +76,7 @@
   font-family: inherit;
   font-size: 12px;
   font-weight: 500;
-  color: #212121;
+  color: var(--color-text-primary);
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -86,7 +86,7 @@
 }
 
 .calendar__day--out {
-  color: rgba(0, 0, 0, 0.32);
+  color: var(--color-text-muted);
 }
 
 .calendar__day--today {
@@ -97,5 +97,5 @@
 .calendar__day--selected,
 .calendar__day--selected:hover {
   background-color: var(--color-primary);
-  color: #ffffff;
+  color: var(--base-color-white);
 }
