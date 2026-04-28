@@ -206,6 +206,8 @@ const UsersPage = ({
         onSearch={(e) => setSearchValue(e.target.value)}
         showAddButton={mode === 'list'}
         onAddClick={onAddClick}
+        stacked
+        buttonSize="small"
       />
       <div className="users-page__content">
         <div className="users-page__content-top">

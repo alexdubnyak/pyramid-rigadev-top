@@ -19,11 +19,10 @@ const TopBar = ({ theme = 'light', onToggleTheme, onMenuClick }) => {
           <span />
         </button>
         <img
-          src={getAssetPath('Riga365 Admin Panel logo.svg')}
-          alt="Riga365"
+          src={getAssetPath(theme === 'dark' ? 'riga_logo_dark.png' : 'riga_logo_light.png')}
+          alt="Riga 365"
           className="topbar__logo"
         />
-        <span className="topbar__brand">Riga 365</span>
       </div>
 
       <div className="topbar__right">

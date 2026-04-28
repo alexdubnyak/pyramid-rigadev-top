@@ -179,11 +179,6 @@
 
 .report-page__download-button {
   min-width: 130px;
-  height: 36px;
-  padding: 0 20px;
-  border-color: var(--color-border);
-  border-radius: var(--border-radius-sm);
-  background-color: transparent;
 }
 
 .report-page__amount {

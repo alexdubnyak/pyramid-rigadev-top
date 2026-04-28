@@ -84,16 +84,22 @@ const OperatorsPage = () => {
         showAddButton
         onAddClick={() => setModal('add')}
         addButtonLabel="Add Operator"
+        stacked
+        buttonSize="small"
       />
-      <TableToolbar title="Operators" stats={[]} icon="operator-sidebar.png" />
-      <Table columns={columns} data={paginatedRows} actions={actions} />
-      <Pagination
-        currentPage={safeCurrentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={handleRowsPerPageChange}
-      />
+      <div className="operators-page__content">
+        <div className="operators-page__content-top">
+          <TableToolbar title="Operators" stats={[]} icon="operator-sidebar.png" />
+          <Table columns={columns} data={paginatedRows} actions={actions} />
+        </div>
+        <Pagination
+          currentPage={safeCurrentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={handleRowsPerPageChange}
+        />
+      </div>
 
       {modal === 'add' && (
         <Modal
