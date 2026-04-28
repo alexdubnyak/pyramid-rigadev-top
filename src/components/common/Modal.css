@@ -93,3 +93,31 @@
   font-size: var(--font-size-md);
   color: var(--color-text-primary);
 }
+
+@media (max-width: 480px) {
+  .modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal {
+    max-width: none;
+    max-height: 92dvh;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  }
+
+  .modal__header,
+  .modal__body,
+  .modal__footer {
+    padding-left: var(--base-spacing-4);
+    padding-right: var(--base-spacing-4);
+  }
+
+  .modal__footer {
+    justify-content: stretch;
+  }
+
+  .modal__footer .button {
+    width: 100%;
+  }
+}

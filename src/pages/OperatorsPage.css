@@ -29,3 +29,11 @@
   font-size: var(--font-size-md);
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .operators-page {
+    height: auto;
+    min-height: 100%;
+    padding: var(--base-spacing-3);
+  }
+}

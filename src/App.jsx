@@ -18,6 +18,7 @@ import './App.css';
 function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
   const [currentPage, setCurrentPage] = useState('dashboard-riga');
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -43,6 +44,7 @@ function App() {
     setUsersSubFrom('users');
     setCashHistoryUser(null);
     setCurrentPage(page);
+    setIsMobileNavOpen(false);
   };
 
   const openUsersSub = (row, from = 'users') => {
@@ -122,10 +124,20 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className={`app ${isMobileNavOpen ? 'app--mobile-nav-open' : ''}`}>
+      <button
+        type="button"
+        className="app__mobile-scrim"
+        aria-label="Close navigation"
+        onClick={() => setIsMobileNavOpen(false)}
+      />
       <Sidebar currentPage={currentPage} onPageChange={handleNavChange} />
       <div className="app__main">
-        <TopBar theme={theme} onToggleTheme={toggleTheme} />
+        <TopBar
+          theme={theme}
+          onToggleTheme={toggleTheme}
+          onMenuClick={() => setIsMobileNavOpen(true)}
+        />
         <main className="app__content">
           {renderPage()}
         </main>

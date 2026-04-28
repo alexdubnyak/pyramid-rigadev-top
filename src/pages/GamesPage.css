@@ -77,3 +77,30 @@
   font-size: var(--font-size-md);
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .games-page {
+    height: auto;
+    min-height: 100%;
+    padding: var(--base-spacing-3);
+  }
+
+  .games-page__tabs {
+    overflow-x: auto;
+    padding: 0 0 var(--base-spacing-2);
+  }
+
+  .games-page__tab {
+    flex: 0 0 auto;
+  }
+
+  .games-page__actions {
+    padding: var(--base-spacing-2) 0;
+  }
+
+  .games-page__actions--split,
+  .games-page__table-tools {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

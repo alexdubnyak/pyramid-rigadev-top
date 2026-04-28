@@ -60,3 +60,49 @@
   width: 196px;
   height: 36px;
 }
+
+@media (max-width: 768px) {
+  .table-toolbar {
+    height: auto;
+    min-height: 50px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--base-spacing-2);
+    padding: var(--base-spacing-3);
+    overflow: visible;
+  }
+
+  .table-toolbar__title {
+    height: auto;
+    flex: 1 1 auto;
+    min-width: 180px;
+    font-size: var(--base-font-md);
+  }
+
+  .table-toolbar__title-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .table-toolbar__extra,
+  .table-toolbar__stats,
+  .table-toolbar__actions {
+    flex: 1 1 100%;
+    width: auto;
+    height: auto;
+  }
+
+  .table-toolbar__stats {
+    flex-wrap: wrap;
+    gap: var(--base-spacing-2) var(--base-spacing-3);
+    white-space: normal;
+  }
+
+  .table-toolbar__extra {
+    flex-wrap: wrap;
+  }
+
+  .table-toolbar__actions {
+    justify-content: flex-start;
+  }
+}

@@ -297,3 +297,69 @@
   overflow: hidden;
   box-shadow: var(--card-shadow);
 }
+
+@media (max-width: 960px) {
+  .dashboard-page__balance-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-period-card {
+    flex-basis: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-page {
+    height: auto;
+    min-height: 100%;
+    padding: var(--base-spacing-3);
+  }
+
+  .dashboard-page__balance-cards {
+    grid-template-columns: 1fr;
+    padding-right: 0;
+  }
+
+  .balance-card {
+    min-height: 112px;
+    height: auto;
+  }
+
+  .dashboard-page__stats-bar {
+    align-items: flex-start;
+    gap: var(--base-spacing-2) var(--base-spacing-3);
+  }
+
+  .dashboard-page__stats-bar .dashboard-page__game-info,
+  .dashboard-page__stats-bar .dashboard-page__game-info+.dashboard-page__stat-item {
+    margin-left: 0;
+  }
+
+  .dashboard-page__stat-item {
+    white-space: normal;
+  }
+
+  .dashboard-page__content-header {
+    align-items: stretch;
+    padding: var(--base-spacing-3);
+  }
+
+  .dashboard-page__date-filters,
+  .dashboard-page__stats {
+    width: 100%;
+  }
+
+  .dashboard-page__date-filters {
+    flex-wrap: wrap;
+  }
+
+  .dashboard-page__content-header .dashboard-page__toolbar {
+    margin-left: 0;
+  }
+
+  .dashboard-page__tabs {
+    overflow-x: auto;
+    padding: var(--base-spacing-3);
+  }
+}

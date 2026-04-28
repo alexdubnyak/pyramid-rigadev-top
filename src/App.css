@@ -1,4 +1,5 @@
 .app {
+  position: relative;
   display: flex;
   height: 100vh;
   overflow: hidden;
@@ -15,4 +16,42 @@
 .app__content {
   flex: 1;
   overflow-y: auto;
+  min-width: 0;
+}
+
+.app__mobile-scrim {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .app {
+    display: block;
+    min-height: 100dvh;
+    height: 100dvh;
+  }
+
+  .app__main {
+    height: 100%;
+  }
+
+  .app__content {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .app__mobile-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 19;
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+    border: 0;
+    transition: opacity var(--transition-fast);
+  }
+
+  .app--mobile-nav-open .app__mobile-scrim {
+    pointer-events: auto;
+    opacity: 1;
+  }
 }
