@@ -22,6 +22,12 @@ auth = oss2.Auth(ACCESS_KEY, SECRET_KEY)
 bucket = oss2.Bucket(auth, ENDPOINT, BUCKET_NAME)
 
 PREFIX = 'pyramid/'
+LEGACY_ROOT_ASSET_ALIASES = {
+    # /pyramid/ is currently cached by Alibaba CDN with these root asset URLs.
+    # Keep them serving the current bundle until CDN cache can be purged.
+    '.js': 'index-ChkmZGfH.js',
+    '.css': 'index-B-ClLUp4.css',
+}
 
 
 def upload_file(oss_key, local_path, filename, root):
@@ -35,7 +41,7 @@ def upload_file(oss_key, local_path, filename, root):
         headers['Content-Type'] = content_type + '; charset=utf-8'
 
     if filename == 'index.html':
-        headers['Cache-Control'] = 'no-cache'
+        headers['Cache-Control'] = 'no-cache, must-revalidate'
     elif 'assets' in root:
         headers['Cache-Control'] = 'max-age=31536000'
 
@@ -69,11 +75,42 @@ for root, dirs, files in os.walk(DIST_DIR):
 
         upload_file(oss_key, local_path, filename, root)
 
-# Upload redirect for pyramid and pyramid/
-redirect_path = 'redirect.html'
-if os.path.exists(redirect_path):
-    upload_file('pyramid', redirect_path, 'redirect.html', '.')
-    upload_file('pyramid/', redirect_path, 'redirect.html', '.')
+assets_dir = os.path.join(DIST_DIR, 'assets')
+
+print('Uploading root asset fallback for cached /pyramid/...')
+root_index_path = os.path.join(DIST_DIR, 'index.html')
+if os.path.exists(root_index_path):
+    # Alibaba CDN currently resolves /pyramid/ through the bucket root index.
+    # Keep it fresh too so the short URL points at the current bundle.
+    upload_file('index.html', root_index_path, 'index.html', DIST_DIR)
+
+favicon_path = os.path.join(DIST_DIR, 'favicon.svg')
+if os.path.exists(favicon_path):
+    upload_file('favicon.svg', favicon_path, 'favicon.svg', DIST_DIR)
+
+current_index_assets = {}
+for root, dirs, files in os.walk(assets_dir):
+    for filename in files:
+        local_path = os.path.join(root, filename)
+        relative_path = os.path.relpath(local_path, assets_dir)
+        upload_file(f'assets/{relative_path}', local_path, filename, root)
+
+        for extension in LEGACY_ROOT_ASSET_ALIASES:
+            if filename.startswith('index-') and filename.endswith(extension):
+                current_index_assets[extension] = local_path
+
+for extension, legacy_name in LEGACY_ROOT_ASSET_ALIASES.items():
+    current_asset_path = current_index_assets.get(extension)
+    if current_asset_path:
+        upload_file(f'assets/{legacy_name}', current_asset_path, legacy_name, assets_dir)
+
+# Ключи "pyramid" и "pyramid/" (без index в имени) в OSS с trailing slash на практике
+# рассинхронизируют метаданные и тело. Держим только prefix pyramid/…file.
+for orphan in ('pyramid', 'pyramid/'):
+    try:
+        bucket.delete_object(orphan)
+    except Exception:
+        pass
 
 print('\nDeploy successful!')
 print('Site: https://projects.rigadev.top/pyramid/')
