@@ -54,36 +54,57 @@
   gap: var(--spacing-md);
 }
 
+/* Унифицировано со стилем DatePicker (плавающий label поверх бордера) */
 .report-page__field {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
+  position: relative;
+  width: 120px;
+  height: 36px;
 }
 
 .report-page__field label {
-  font-size: var(--font-size-xs);
+  position: absolute;
+  top: -7px;
+  left: 13px;
+  padding: 1px 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
   color: var(--color-text-secondary);
+  background-color: var(--color-background-panel);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.report-page__field input,
 .report-page__field select {
-  min-width: 120px;
-  padding: var(--input-padding-y) 36px var(--input-padding-y) var(--input-padding-x);
-  height: 36px;
-  font-size: var(--font-size-sm);
-  color: var(--input-text-color);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-sm);
+  width: 100%;
+  height: 100%;
+  padding: 0 36px 0 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--color-text-primary);
   background-color: var(--input-bg-color);
-}
-
-.report-page__field select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z' fill='%238a8d99'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right var(--base-spacing-3) center;
-  background-size: 20px 20px;
+  border: 1px solid var(--color-border-sidebar);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
   appearance: none;
   -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z' fill='%238a8d99'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 9px center;
+  background-size: 18px 18px;
+}
+
+.report-page__field select:hover {
+  border-color: var(--color-text-muted);
+}
+
+.report-page__field select:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
 }
 
 .report-page__date-range {
@@ -96,7 +117,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
   min-height: 36px;
   min-width: 0;
   flex: 1 1 auto;
@@ -115,7 +136,7 @@
 .report-page__group-segment {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
 }
 
 .report-page__chip {
@@ -165,92 +186,7 @@
   background-color: transparent;
 }
 
-.report-table-container {
-  flex: 1;
-  min-height: 0;
-  overflow: auto;
-  background-color: var(--table-row-bg);
-}
-
-.report-table {
-  width: 100%;
-  min-width: 1180px;
-  border-collapse: collapse;
-}
-
-.report-table th {
-  height: var(--table-header-height);
-  padding: var(--table-padding-y) var(--table-padding-x);
-  font-size: var(--table-header-font-size);
-  font-weight: var(--table-header-font-weight);
-  color: var(--table-header-color);
-  text-align: left;
-  background-color: var(--table-header-bg);
-  border-bottom: 1px solid var(--table-border-color);
-}
-
-.report-table td {
-  height: var(--table-row-height);
-  padding: var(--table-padding-y) var(--table-padding-x);
-  font-size: var(--font-size-md);
-  color: var(--color-text-primary);
-  background-color: var(--table-row-bg);
-  border-bottom: 1px solid var(--table-border-color);
-}
-
-.report-table tbody tr:nth-child(odd) td {
-  background-color: var(--color-hover);
-}
-
-.report-table tfoot td {
-  height: 56px;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-secondary);
-  background-color: var(--table-row-bg);
-}
-
-.report-table__header-content {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--spacing-xs);
-}
-
-.report-table th:first-child .report-table__header-content,
-.report-table th:nth-child(2) .report-table__header-content,
-.report-table th:nth-child(3) .report-table__header-content,
-.report-table th:nth-child(4) .report-table__header-content,
-.report-table th:nth-child(6) .report-table__header-content {
-  justify-content: flex-start;
-}
-
-.report-table__sort,
-.report-table__menu,
-.report-table__collapse,
-.report-table__row-toggle {
-  color: var(--color-text-muted);
-}
-
-.report-table__menu {
-  margin-left: auto;
-  font-size: var(--font-size-lg);
-}
-
-.report-table__header--narrow,
-.report-table__cell--narrow {
-  width: 48px;
-}
-
-.report-table__cell--center {
-  text-align: center;
-}
-
-.report-table__cell--right {
-  text-align: right;
-}
-
-.report-table__amount {
+.report-page__amount {
   font-weight: var(--font-weight-semibold);
   white-space: nowrap;
 }
@@ -264,5 +200,42 @@
 
   .report-page__downloads {
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .report-page {
+    height: auto;
+    min-height: 100%;
+    padding: var(--base-spacing-3);
+  }
+
+  .report-page__top {
+    padding: var(--base-spacing-3);
+  }
+
+  .report-page__period {
+    flex-wrap: wrap;
+  }
+
+  .report-page__field {
+    flex: 1 1 120px;
+  }
+
+  .report-page__date-range {
+    white-space: normal;
+  }
+
+  .report-page__grouping {
+    padding: var(--base-spacing-2);
+  }
+
+  .report-page__downloads {
+    width: 100%;
+  }
+
+  .report-page__download-button {
+    flex: 1 1 130px;
+    min-width: 130px;
   }
 }

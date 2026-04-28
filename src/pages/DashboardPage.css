@@ -122,10 +122,6 @@
   box-shadow: var(--card-shadow);
 }
 
-.dashboard-page__stats-bar .dashboard-page__game-info+.dashboard-page__stat-item {
-  margin-left: auto;
-}
-
 .dashboard-page__game-info {
   display: flex;
   align-items: center;
@@ -164,6 +160,20 @@
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-primary);
+}
+
+.dashboard-page__stats-strip-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: auto;
+}
+
+.dashboard-page__stats-strip {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .dashboard-page__stat-item {
@@ -321,23 +331,80 @@
     padding-right: 0;
   }
 
+  .dashboard-period-card {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 14px 10px;
+    padding: 10px;
+  }
+
+  .dashboard-period-card__title {
+    flex: 0 0 100%;
+  }
+
   .balance-card {
     min-height: 112px;
     height: auto;
   }
 
-  .dashboard-page__stats-bar {
-    align-items: flex-start;
-    gap: var(--base-spacing-2) var(--base-spacing-3);
+  .balance-card__icon {
+    width: 86px !important;
+    height: 86px;
   }
 
-  .dashboard-page__stats-bar .dashboard-page__game-info,
-  .dashboard-page__stats-bar .dashboard-page__game-info+.dashboard-page__stat-item {
+  .balance-card__label {
+    white-space: nowrap;
+  }
+
+  .dashboard-page__stats-bar {
+    position: relative;
+    align-items: stretch;
+    flex-direction: column;
+    gap: var(--base-spacing-3);
+    overflow: hidden;
+  }
+
+  .dashboard-page__stats-strip-wrap {
+    position: relative;
+    width: 100%;
     margin-left: 0;
+    overflow: hidden;
+  }
+
+  .dashboard-page__stats-strip-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 42px;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(242, 241, 236, 0), var(--card-bg-color) 78%);
+  }
+
+  [data-theme="dark"] .dashboard-page__stats-strip-wrap::after {
+    background: linear-gradient(90deg, rgba(33, 33, 42, 0), var(--card-bg-color) 78%);
+  }
+
+  .dashboard-page__stats-strip {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 24px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-right: 42px;
+  }
+
+  .dashboard-page__stats-strip::-webkit-scrollbar {
+    display: none;
   }
 
   .dashboard-page__stat-item {
-    white-space: normal;
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
 
   .dashboard-page__content-header {
@@ -356,6 +423,14 @@
 
   .dashboard-page__content-header .dashboard-page__toolbar {
     margin-left: 0;
+  }
+
+  .dashboard-page__content .table-container {
+    overflow-x: auto;
+  }
+
+  .dashboard-page__content .table {
+    min-width: 1120px;
   }
 
   .dashboard-page__tabs {

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TableToolbar from '../components/table/TableToolbar';
+import Table from '../components/table/Table';
 import Pagination from '../components/table/Pagination';
 import Button from '../components/common/Button';
 import './ReportPage.css';
@@ -7,18 +8,22 @@ import './ReportPage.css';
 const YEARS = [2024, 2025, 2026, 2027];
 const WEEKS = Array.from({ length: 52 }, (_, i) => i + 1);
 const GROUPS = ['Username', 'Game', 'Round', 'Date'];
+
+const renderAmount = (key) => (row) => (
+  <span className="report-page__amount">{row[key]}</span>
+);
+
 const REPORT_COLUMNS = [
-  { key: 'username', label: 'Username', align: 'left' },
-  { key: 'game', label: 'Game', align: 'left' },
-  { key: 'round', label: 'Round', align: 'left' },
-  { key: 'date', label: 'Date', align: 'left' },
-  { key: 'expand', label: '', align: 'center', narrow: true },
-  { key: 'roundTime', label: 'Round time/date', align: 'left' },
-  { key: 'totalSale', label: 'Total sale', align: 'right' },
-  { key: 'totalWinnings', label: 'Total winnings', align: 'right' },
-  { key: 'totalCommission', label: 'Total commission', align: 'right' },
-  { key: 'totalBonus', label: 'Total bonus', align: 'right' },
-  { key: 'settlement', label: 'Settlement', align: 'right' },
+  { key: 'username', label: 'Username', sortable: true },
+  { key: 'game', label: 'Game', sortable: true },
+  { key: 'round', label: 'Round', sortable: true },
+  { key: 'date', label: 'Date', sortable: true },
+  { key: 'roundTime', label: 'Round time/date', sortable: true },
+  { key: 'totalSale', label: 'Total sale', sortable: true, render: renderAmount('totalSale') },
+  { key: 'totalWinnings', label: 'Total winnings', sortable: true, render: renderAmount('totalWinnings') },
+  { key: 'totalCommission', label: 'Total commission', sortable: true, render: renderAmount('totalCommission') },
+  { key: 'totalBonus', label: 'Total bonus', sortable: true, render: renderAmount('totalBonus') },
+  { key: 'settlement', label: 'Settlement', sortable: true, render: renderAmount('settlement') },
 ];
 
 const REPORT_ROWS = [
@@ -48,19 +53,25 @@ const REPORT_ROWS = [
   },
 ];
 
-const REPORT_TOTALS = {
-  totalSale: '26,850.00',
-  totalWinnings: '56,000.00',
-  totalCommission: '3,934.00',
-  totalBonus: '4,600.00',
-  settlement: '-37,684.00',
-};
-
 const ReportPage = () => {
   const [year, setYear] = useState(2024);
   const [week, setWeek] = useState(42);
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const totalPages = Math.max(1, Math.ceil(REPORT_ROWS.length / rowsPerPage));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const firstRowIndex = (safeCurrentPage - 1) * rowsPerPage;
+  const paginatedRows = REPORT_ROWS.slice(firstRowIndex, firstRowIndex + rowsPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(Math.min(Math.max(page, 1), totalPages));
+  };
+
+  const handleRowsPerPageChange = (value) => {
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
 
   return (
     <div className="report-page">
@@ -125,85 +136,14 @@ const ReportPage = () => {
               <Button variant="secondary" size="sm" className="report-page__download-button">Download xls</Button>
             </div>
           </TableToolbar>
-          <div className="report-table-container">
-            <table className="report-table">
-              <thead>
-                <tr>
-                  {REPORT_COLUMNS.map((column) => (
-                    <th
-                      key={column.key}
-                      className={[
-                        column.align === 'right' ? 'report-table__cell--right' : '',
-                        column.align === 'center' ? 'report-table__cell--center' : '',
-                        column.narrow ? 'report-table__header--narrow' : '',
-                      ].filter(Boolean).join(' ')}
-                    >
-                      {column.label && (
-                        <div className="report-table__header-content">
-                          <span>{column.label}</span>
-                          <span className="report-table__sort" aria-hidden="true">↑↓</span>
-                          <span className="report-table__menu" aria-hidden="true">⋮</span>
-                        </div>
-                      )}
-                      {column.key === 'expand' && (
-                        <span className="report-table__collapse" aria-hidden="true">⌄</span>
-                      )}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {REPORT_ROWS.map((row) => (
-                  <tr key={row.username}>
-                    {REPORT_COLUMNS.map((column) => (
-                      <td
-                        key={column.key}
-                        className={[
-                          column.align === 'right' ? 'report-table__cell--right' : '',
-                          column.align === 'center' ? 'report-table__cell--center' : '',
-                          column.narrow ? 'report-table__cell--narrow' : '',
-                          ['totalSale', 'totalWinnings', 'totalCommission', 'totalBonus', 'settlement'].includes(column.key)
-                            ? 'report-table__amount'
-                            : '',
-                        ].filter(Boolean).join(' ')}
-                      >
-                        {column.key === 'expand' ? (
-                          <span className="report-table__row-toggle">⌄</span>
-                        ) : (
-                          row[column.key]
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr>
-                  {REPORT_COLUMNS.map((column) => (
-                    <td
-                      key={column.key}
-                      className={[
-                        column.align === 'right' ? 'report-table__cell--right' : '',
-                        column.narrow ? 'report-table__cell--narrow' : '',
-                        ['totalSale', 'totalWinnings', 'totalCommission', 'totalBonus', 'settlement'].includes(column.key)
-                          ? 'report-table__amount'
-                          : '',
-                      ].filter(Boolean).join(' ')}
-                    >
-                      {REPORT_TOTALS[column.key] ?? ''}
-                    </td>
-                  ))}
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+          <Table columns={REPORT_COLUMNS} data={paginatedRows} />
         </div>
         <Pagination
-          currentPage={currentPage}
-          totalPages={1}
-          onPageChange={setCurrentPage}
+          currentPage={safeCurrentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
           rowsPerPage={rowsPerPage}
-          onRowsPerPageChange={setRowsPerPage}
+          onRowsPerPageChange={handleRowsPerPageChange}
         />
       </div>
     </div>

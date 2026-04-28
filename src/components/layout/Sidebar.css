@@ -243,22 +243,16 @@
   }
 
   .sidebar--collapsed {
-    width: min(82vw, 280px);
+    width: var(--sidebar-width-collapsed);
   }
 
   .sidebar--collapsed .sidebar__header,
   .sidebar--collapsed .sidebar__nav-item {
-    justify-content: flex-start;
-    padding: var(--base-spacing-2) var(--base-spacing-3);
+    justify-content: center;
+    padding: var(--base-spacing-2);
   }
 
   .sidebar__header {
     min-height: 48px;
-  }
-
-  .sidebar--collapsed .sidebar__collapse-text,
-  .sidebar--collapsed .sidebar__nav-item span,
-  .sidebar--collapsed .sidebar__nav-arrow {
-    display: inline;
   }
 }

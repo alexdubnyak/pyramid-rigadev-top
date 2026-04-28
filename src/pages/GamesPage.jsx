@@ -83,6 +83,26 @@ const GamesPage = () => {
     },
   ];
 
+  const activeRows = tab === 'games' ? gamesRows : groupRows;
+  const totalPages = Math.max(1, Math.ceil(activeRows.length / rowsPerPage));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const firstRowIndex = (safeCurrentPage - 1) * rowsPerPage;
+  const paginatedRows = activeRows.slice(firstRowIndex, firstRowIndex + rowsPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(Math.min(Math.max(page, 1), totalPages));
+  };
+
+  const handleRowsPerPageChange = (value) => {
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
+  const handleTabChange = (nextTab) => {
+    setTab(nextTab);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="games-page">
       <Header searchValue={searchValue} onSearch={(e) => setSearchValue(e.target.value)} showAddButton={false} />
@@ -90,14 +110,14 @@ const GamesPage = () => {
         <button
           type="button"
           className={`games-page__tab ${tab === 'games' ? 'games-page__tab--active' : ''}`}
-          onClick={() => setTab('games')}
+          onClick={() => handleTabChange('games')}
         >
           GAMES
         </button>
         <button
           type="button"
           className={`games-page__tab ${tab === 'groups' ? 'games-page__tab--active' : ''}`}
-          onClick={() => setTab('groups')}
+          onClick={() => handleTabChange('groups')}
         >
           GROUPS
         </button>
@@ -109,7 +129,7 @@ const GamesPage = () => {
             <Button variant="secondary" size="sm" type="button">Request more Games</Button>
           </div>
           <TableToolbar title="Games" stats={[]} icon="games-sidebar.png" />
-          <Table columns={gameColumns} data={gamesRows} />
+          <Table columns={gameColumns} data={paginatedRows} />
         </>
       )}
 
@@ -125,16 +145,16 @@ const GamesPage = () => {
             </div>
           </div>
           <TableToolbar title="Game groups" stats={[]} icon="games-sidebar.png" />
-          <Table columns={groupColumns} data={groupRows} />
+          <Table columns={groupColumns} data={paginatedRows} />
         </>
       )}
 
       <Pagination
-        currentPage={currentPage}
-        totalPages={1}
-        onPageChange={setCurrentPage}
+        currentPage={safeCurrentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
         rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={setRowsPerPage}
+        onRowsPerPageChange={handleRowsPerPageChange}
       />
 
       {modal === 'create-group' && (
