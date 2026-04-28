@@ -37,6 +37,20 @@ const CashSettlementPage = ({ onOpenBalanceHistory }) => {
     { label: 'Pending', value: '1' },
   ];
 
+  const totalPages = Math.max(1, Math.ceil(mockData.length / rowsPerPage));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const firstRowIndex = (safeCurrentPage - 1) * rowsPerPage;
+  const paginatedData = mockData.slice(firstRowIndex, firstRowIndex + rowsPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(Math.min(Math.max(page, 1), totalPages));
+  };
+
+  const handleRowsPerPageChange = (value) => {
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="cash-settlement-page">
       <Header
@@ -51,14 +65,14 @@ const CashSettlementPage = ({ onOpenBalanceHistory }) => {
             stats={stats}
             icon="cash-settlement-sidebar.png"
           />
-          <Table columns={columns} data={mockData} actions={actions} />
+          <Table columns={columns} data={paginatedData} actions={actions} />
         </div>
         <Pagination
-          currentPage={currentPage}
-          totalPages={1}
-          onPageChange={setCurrentPage}
+          currentPage={safeCurrentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
           rowsPerPage={rowsPerPage}
-          onRowsPerPageChange={setRowsPerPage}
+          onRowsPerPageChange={handleRowsPerPageChange}
         />
       </div>
     </div>

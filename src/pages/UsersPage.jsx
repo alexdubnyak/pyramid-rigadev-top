@@ -122,6 +122,20 @@ const UsersPage = ({
     { label: 'Total users online', value: '0' },
   ];
 
+  const totalPages = Math.max(1, Math.ceil(data.length / rowsPerPage));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const firstRowIndex = (safeCurrentPage - 1) * rowsPerPage;
+  const paginatedData = data.slice(firstRowIndex, firstRowIndex + rowsPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(Math.min(Math.max(page, 1), totalPages));
+  };
+
+  const handleRowsPerPageChange = (value) => {
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="users-page">
       {toast && <Toast message={toast} onDismiss={dismissToast} />}
@@ -202,16 +216,16 @@ const UsersPage = ({
           />
           <Table
             columns={columns}
-            data={data}
+            data={paginatedData}
             actions={mode === 'sub' ? actionsSub : actionsMain}
           />
         </div>
         <Pagination
-          currentPage={currentPage}
-          totalPages={1}
-          onPageChange={setCurrentPage}
+          currentPage={safeCurrentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
           rowsPerPage={rowsPerPage}
-          onRowsPerPageChange={setRowsPerPage}
+          onRowsPerPageChange={handleRowsPerPageChange}
         />
       </div>
     </div>

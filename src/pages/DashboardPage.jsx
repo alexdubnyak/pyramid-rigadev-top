@@ -75,6 +75,19 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
     { key: 'yantraId', label: 'Yantra ID', sortable: true },
   ];
 
+  const totalPages = Math.max(1, Math.ceil(mockData.length / rowsPerPage));
+  const firstRowIndex = (currentPage - 1) * rowsPerPage;
+  const paginatedRows = mockData.slice(firstRowIndex, firstRowIndex + rowsPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(Math.min(Math.max(page, 1), totalPages));
+  };
+
+  const handleRowsPerPageChange = (value) => {
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="dashboard-page">
       <div className="dashboard-page__balance-cards">
@@ -164,14 +177,18 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
           />
           <span className="dashboard-page__title">{currentGameInfo.label}</span>
         </div>
-        <span className="dashboard-page__stat-item">Draws: <strong>1</strong></span>
-        <span className="dashboard-page__stat-item">Pending draws: <strong>1</strong></span>
-        <span className="dashboard-page__stat-item">Calculated draws: <strong>0</strong></span>
-        <span className="dashboard-page__stat-item">Tickets: <strong>0</strong></span>
-        <span className="dashboard-page__stat-item">Pending tickets: <strong>0</strong></span>
-        <span className="dashboard-page__stat-item">Sum: <strong>0.00</strong></span>
-        <span className="dashboard-page__stat-item">Payout: <strong>0.00</strong></span>
-        <span className="dashboard-page__stat-item">Commission: <strong>0.00</strong></span>
+        <div className="dashboard-page__stats-strip-wrap">
+          <div className="dashboard-page__stats-strip">
+            <span className="dashboard-page__stat-item">Draws: <strong>1</strong></span>
+            <span className="dashboard-page__stat-item">Pending draws: <strong>1</strong></span>
+            <span className="dashboard-page__stat-item">Calculated draws: <strong>0</strong></span>
+            <span className="dashboard-page__stat-item">Tickets: <strong>0</strong></span>
+            <span className="dashboard-page__stat-item">Pending tickets: <strong>0</strong></span>
+            <span className="dashboard-page__stat-item">Sum: <strong>0.00</strong></span>
+            <span className="dashboard-page__stat-item">Payout: <strong>0.00</strong></span>
+            <span className="dashboard-page__stat-item">Commission: <strong>0.00</strong></span>
+          </div>
+        </div>
       </div>
 
       <div className="dashboard-page__content">
@@ -189,13 +206,13 @@ const DashboardPage = ({ currentGame = 'dashboard-riga' }) => {
             <IconButton icon="fullscreen" />
           </div>
         </div>
-        <Table columns={columns} data={mockData} />
+        <Table columns={columns} data={paginatedRows} />
         <Pagination 
           currentPage={currentPage}
-          totalPages={1}
-          onPageChange={setCurrentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
           rowsPerPage={rowsPerPage}
-          onRowsPerPageChange={setRowsPerPage}
+          onRowsPerPageChange={handleRowsPerPageChange}
         />
       </div>
     </div>

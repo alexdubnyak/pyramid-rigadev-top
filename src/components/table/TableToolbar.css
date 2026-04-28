@@ -93,9 +93,39 @@
   }
 
   .table-toolbar__stats {
-    flex-wrap: wrap;
-    gap: var(--base-spacing-2) var(--base-spacing-3);
-    white-space: normal;
+    position: relative;
+    flex-wrap: nowrap;
+    gap: 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-right: 42px;
+    white-space: nowrap;
+  }
+
+  .table-toolbar__stats::-webkit-scrollbar {
+    display: none;
+  }
+
+  .table-toolbar__stats::after {
+    content: '';
+    position: sticky;
+    right: -42px;
+    flex: 0 0 42px;
+    align-self: stretch;
+    margin-left: -42px;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(242, 241, 236, 0), var(--color-background-panel) 78%);
+  }
+
+  [data-theme="dark"] .table-toolbar__stats::after {
+    background: linear-gradient(90deg, rgba(33, 33, 42, 0), var(--color-background-panel) 78%);
+  }
+
+  .table-toolbar__stat {
+    flex: 0 0 auto;
   }
 
   .table-toolbar__extra {
