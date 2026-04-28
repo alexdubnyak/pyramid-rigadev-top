@@ -19,8 +19,7 @@ AWS_ACCESS_KEY_ID=$OSS_ACCESS_KEY \
 AWS_SECRET_ACCESS_KEY=$OSS_SECRET_KEY \
 aws s3 sync dist/ s3://$OSS_BUCKET/ \
   --endpoint-url $OSS_ENDPOINT \
-  --delete \
-  --no-sign-request=false
+  --delete
 
 if [ $? -eq 0 ]; then
   echo "Deploy successful! Site available at https://projects.rigadev.top"
