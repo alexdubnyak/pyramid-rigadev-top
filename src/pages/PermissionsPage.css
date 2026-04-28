@@ -85,3 +85,21 @@
   width: 18px;
   height: 18px;
 }
+
+@media (max-width: 768px) {
+  .permissions-page {
+    max-width: none;
+    padding: var(--base-spacing-3);
+  }
+
+  .permissions-page__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--base-spacing-2);
+  }
+
+  .permissions-page__nested {
+    margin-left: var(--base-spacing-3);
+    padding-left: var(--base-spacing-3);
+  }
+}

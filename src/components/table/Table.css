@@ -2,6 +2,7 @@
   width: 100%;
   overflow-x: auto;
   background-color: var(--table-row-bg);
+  -webkit-overflow-scrolling: touch;
 }
 
 .table {
@@ -70,4 +71,23 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+  .table {
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .table__header,
+  .table__cell {
+    height: 44px;
+    padding: var(--base-spacing-2) var(--base-spacing-3);
+    font-size: var(--base-font-sm);
+    white-space: nowrap;
+  }
+
+  .table__header-content {
+    gap: 2px;
+  }
 }

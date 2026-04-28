@@ -15,12 +15,18 @@
   display: flex;
   align-items: center;
   gap: var(--base-spacing-3);
+  min-width: 0;
 }
 
 .topbar__right {
   display: flex;
   align-items: center;
   gap: var(--base-spacing-8);
+  min-width: 0;
+}
+
+.topbar__menu {
+  display: none;
 }
 
 .topbar__logo {
@@ -112,4 +118,101 @@
 .topbar__theme:hover,
 .topbar__logout:hover {
   background-color: var(--color-hover);
+}
+
+@media (max-width: 1024px) {
+  .topbar__right {
+    gap: var(--base-spacing-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: auto;
+    min-height: 56px;
+    margin: 0;
+    padding: var(--base-spacing-2) var(--base-spacing-3);
+    border-width: 0 0 1px;
+    border-radius: 0;
+  }
+
+  .topbar__menu {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--base-radius-md);
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .topbar__menu span {
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--color-text-primary);
+  }
+
+  .topbar__logo {
+    height: 28px;
+  }
+
+  .topbar__brand {
+    font-size: var(--base-font-md);
+  }
+
+  .topbar__right {
+    gap: var(--base-spacing-2);
+    margin-left: auto;
+  }
+
+  .topbar__user-info,
+  .topbar__balance span:first-of-type,
+  .topbar__theme span,
+  .topbar__logout span {
+    display: none;
+  }
+
+  .topbar__theme,
+  .topbar__logout {
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .topbar__balance {
+    gap: var(--base-spacing-1);
+    max-width: 92px;
+    overflow: hidden;
+  }
+
+  .topbar__balance-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 420px) {
+  .topbar__brand {
+    display: none;
+  }
+
+  .topbar__balance {
+    max-width: 44px;
+  }
+
+  .topbar__balance-value {
+    display: none;
+  }
 }

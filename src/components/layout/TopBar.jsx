@@ -1,13 +1,23 @@
 import { getAssetPath } from '../../utils/getAssetPath';
 import './TopBar.css';
 
-const TopBar = ({ theme = 'light', onToggleTheme }) => {
+const TopBar = ({ theme = 'light', onToggleTheme, onMenuClick }) => {
   const themeIcon = theme === 'dark' ? 'light-mode-topbar.png' : 'dark-mode-topbar.png';
   const themeLabel = theme === 'dark' ? 'Light mode' : 'Dark mode';
 
   return (
     <div className="topbar">
       <div className="topbar__left">
+        <button
+          type="button"
+          className="topbar__menu"
+          aria-label="Open navigation"
+          onClick={onMenuClick}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
         <img
           src={getAssetPath('Riga365 Admin Panel logo.svg')}
           alt="Riga365"

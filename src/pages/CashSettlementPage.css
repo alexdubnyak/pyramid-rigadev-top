@@ -27,3 +27,11 @@
 .cash-settlement-page__content .pagination {
   margin-top: auto;
 }
+
+@media (max-width: 768px) {
+  .cash-settlement-page {
+    height: auto;
+    min-height: 100%;
+    padding: var(--base-spacing-3);
+  }
+}

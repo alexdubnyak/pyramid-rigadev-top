@@ -119,3 +119,25 @@
 .users-page__game-stepper button:hover {
   background: var(--color-hover);
 }
+
+@media (max-width: 768px) {
+  .users-page {
+    height: auto;
+    min-height: 100%;
+    padding: var(--base-spacing-3);
+  }
+
+  .users-page__content {
+    min-height: 0;
+  }
+
+  .users-page__breadcrumb {
+    flex-wrap: wrap;
+    padding: var(--base-spacing-2) var(--base-spacing-3) 0;
+  }
+
+  .users-page__game-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
