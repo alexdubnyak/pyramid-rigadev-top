@@ -132,8 +132,8 @@ const ReportPage = () => {
         <div className="report-page__content-top">
           <TableToolbar title="Weekly report" stats={[]} icon="report-sidebar.png">
             <div className="report-page__downloads">
-              <Button variant="secondary" size="sm" className="report-page__download-button">Download pdf</Button>
-              <Button variant="secondary" size="sm" className="report-page__download-button">Download xls</Button>
+              <Button variant="accent" size="small" className="report-page__download-button">Download PDF</Button>
+              <Button variant="accent" size="small" className="report-page__download-button">Download XLS</Button>
             </div>
           </TableToolbar>
           <Table columns={REPORT_COLUMNS} data={paginatedRows} />

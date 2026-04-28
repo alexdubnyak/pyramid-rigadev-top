@@ -44,7 +44,7 @@ const GamesPage = () => {
       label: 'Actions',
       sortable: false,
       render: () => (
-        <Button variant="secondary" size="sm" type="button">
+        <Button variant="accent" size="small" type="button">
           Edit
         </Button>
       ),
@@ -61,8 +61,8 @@ const GamesPage = () => {
       render: (row) => (
         <div className="games-page__row-actions">
           <Button
-            variant="secondary"
-            size="sm"
+            variant="accent"
+            size="small"
             type="button"
             onClick={() => {
               setRenameTarget(row);
@@ -70,12 +70,12 @@ const GamesPage = () => {
               setModal('rename-group');
             }}
           >
-            Modify name
+            Modify Name
           </Button>
-          <Button variant="secondary" size="sm" type="button" onClick={() => setModal('assign-games')}>
-            Modify games
+          <Button variant="accent" size="small" type="button" onClick={() => setModal('assign-games')}>
+            Modify Games
           </Button>
-          <Button variant="secondary" size="sm" type="button">
+          <Button variant="accent" size="small" type="button">
             Delete
           </Button>
         </div>
@@ -126,7 +126,7 @@ const GamesPage = () => {
       {tab === 'games' && (
         <>
           <div className="games-page__actions">
-            <Button variant="secondary" size="sm" type="button">Request more Games</Button>
+            <Button variant="accent" size="mid" type="button">Request More Games</Button>
           </div>
           <TableToolbar title="Games" stats={[]} icon="games-sidebar.png" />
           <Table columns={gameColumns} data={paginatedRows} />
@@ -136,8 +136,8 @@ const GamesPage = () => {
       {tab === 'groups' && (
         <>
           <div className="games-page__actions games-page__actions--split">
-            <Button variant="secondary" size="sm" type="button" onClick={() => setModal('create-group')}>
-              Create new game group
+            <Button variant="accent" size="mid" type="button" onClick={() => setModal('create-group')}>
+              Create New Game Group
             </Button>
             <div className="games-page__table-tools">
               <IconButton icon="search" />

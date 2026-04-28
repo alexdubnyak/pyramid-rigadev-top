@@ -3,9 +3,19 @@ import Button from '../common/Button';
 import Icon from '../common/Icon';
 import './Header.css';
 
-const Header = ({ onSearch, searchValue, showAddButton = false, onAddClick, addButtonLabel = 'Add Area Distributer' }) => {
+const Header = ({
+  onSearch,
+  searchValue,
+  showAddButton = false,
+  onAddClick,
+  addButtonLabel = 'Add Area Distributor',
+  stacked = false,
+  buttonSize = 'mid',
+}) => {
+  const className = ['header', stacked ? 'header--stacked' : ''].filter(Boolean).join(' ');
+
   return (
-    <header className="header">
+    <header className={className}>
       <div className="header__search">
         <SearchInput 
           placeholder="Search"
@@ -16,7 +26,8 @@ const Header = ({ onSearch, searchValue, showAddButton = false, onAddClick, addB
       
       {showAddButton && (
         <Button 
-          variant="secondary" 
+          variant="accent"
+          size={buttonSize}
           onClick={onAddClick}
           className="header__add-button"
         >

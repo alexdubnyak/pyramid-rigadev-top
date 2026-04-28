@@ -41,6 +41,12 @@
   padding-left: 8px;
 }
 
+/* В колоночном layout (десктоп) — пикеры заполняют ширину карточки.
+   В строчном layout (мобила, см. media-query ниже) — делят строку поровну. */
+.dashboard-period-card .date-picker {
+  width: 100%;
+}
+
 .balance-card {
   position: relative;
   flex: 1 0 0;
@@ -341,6 +347,12 @@
 
   .dashboard-period-card__title {
     flex: 0 0 100%;
+  }
+
+  .dashboard-period-card .date-picker {
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
   }
 
   .balance-card {

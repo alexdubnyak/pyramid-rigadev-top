@@ -88,8 +88,8 @@ const BalanceTransactionsPage = ({ user, onBack }) => {
           />
         </div>
         <div className="balance-transactions-page__downloads">
-          <Button variant="secondary" size="sm">Download xlsx</Button>
-          <Button variant="secondary" size="sm">Download pdf</Button>
+          <Button variant="accent" size="small">Download XLSX</Button>
+          <Button variant="accent" size="small">Download PDF</Button>
         </div>
       </div>
 

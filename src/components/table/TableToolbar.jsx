@@ -2,7 +2,7 @@ import IconButton from '../common/IconButton';
 import { getAssetPath } from '../../utils/getAssetPath';
 import './TableToolbar.css';
 
-const TableToolbar = ({ stats, title, icon, children }) => {
+const TableToolbar = ({ stats, title, icon, children, hideActions = false }) => {
   return (
     <div className="table-toolbar">
       <div className="table-toolbar__title">
@@ -27,13 +27,15 @@ const TableToolbar = ({ stats, title, icon, children }) => {
           </span>
         ))}
       </div>
-      <div className="table-toolbar__actions">
-        <IconButton icon="search" />
-        <IconButton icon="filter" />
-        <IconButton icon="view-column" />
-        <IconButton icon="density-medium" />
-        <IconButton icon="fullscreen" />
-      </div>
+      {!hideActions && (
+        <div className="table-toolbar__actions">
+          <IconButton icon="search" />
+          <IconButton icon="filter" />
+          <IconButton icon="view-column" />
+          <IconButton icon="density-medium" />
+          <IconButton icon="fullscreen" />
+        </div>
+      )}
     </div>
   );
 };

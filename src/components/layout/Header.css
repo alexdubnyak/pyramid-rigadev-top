@@ -17,11 +17,26 @@
 
 .header__add-button {
   white-space: nowrap;
-  background-color: var(--color-active-orange);
-  border-color: var(--color-active-orange);
 }
 
-.header__add-button:hover:not(:disabled) {
-  background-color: #ffbfa6;
-  border-color: #ffbfa6;
+/* Stacked-режим — это адаптивный модификатор: страницы (Users, Operators)
+   указывают `stacked`, чтобы только на телефонах поиск и кнопка вставали
+   друг под другом. На планшете и десктопе остаётся стандартный
+   side-by-side layout. */
+@media (max-width: 480px) {
+  .header--stacked {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    gap: 12px;
+  }
+
+  .header--stacked .header__search {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .header--stacked .header__add-button {
+    width: 100%;
+  }
 }

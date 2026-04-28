@@ -76,8 +76,8 @@ const TransactionsPage = () => {
         <div className="transactions-page__content-top">
           <TableToolbar title="Transactions" stats={[]} icon="transactions-sidebar.png">
             <div className="transactions-page__downloads">
-              <Button variant="secondary" size="sm" className="transactions-page__download-button">Download pdf</Button>
-              <Button variant="secondary" size="sm" className="transactions-page__download-button">Download xls</Button>
+              <Button variant="accent" size="small" className="transactions-page__download-button">Download PDF</Button>
+              <Button variant="accent" size="small" className="transactions-page__download-button">Download XLS</Button>
             </div>
           </TableToolbar>
           <Table columns={TRANSACTION_COLUMNS} data={paginatedRows} />

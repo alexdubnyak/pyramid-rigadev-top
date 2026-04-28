@@ -14,7 +14,8 @@
   cursor: not-allowed;
 }
 
-.button--sm {
+.button--sm,
+.button--small {
   height: var(--button-height-sm);
   padding: 0 var(--spacing-md);
   font-size: var(--font-size-sm);
@@ -24,6 +25,13 @@
   height: var(--button-height-md);
   padding: 0 var(--spacing-lg);
   font-size: var(--font-size-md);
+}
+
+.button--mid {
+  height: 48px;
+  padding: 0 20px;
+  font-size: var(--font-size-md);
+  border-radius: 8px;
 }
 
 .button--lg {
@@ -49,6 +57,32 @@
 
 .button--secondary:hover:not(:disabled) {
   background-color: var(--color-hover);
+}
+
+.button--accent {
+  background-color: var(--color-active-orange);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-active-orange);
+}
+
+.button--accent:hover:not(:disabled) {
+  background-color: #ffbfa6;
+  border-color: #ffbfa6;
+}
+
+/* В тёмной теме акцентные кнопки используют тот же тёмно-коричневый фон,
+   что и выделенный пункт сайдбара (`var(--color-active-orange)` = #6e3d29),
+   а текст — светлый, как в активном пункте навигации. */
+[data-theme="dark"] .button--accent {
+  background-color: var(--color-active-orange);
+  border-color: var(--color-active-orange);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .button--accent:hover:not(:disabled) {
+  background-color: #8a4d34;
+  border-color: #8a4d34;
+  color: var(--color-text-primary);
 }
 
 .button--icon {
